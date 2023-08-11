@@ -3,4 +3,4 @@
  * @module nest-commander
  */
 
-export {}
+export * from './providers'
