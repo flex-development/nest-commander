@@ -46,11 +46,16 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
         all: !LINT_STAGED,
         clean: true,
         cleanOnRerun: true,
-        exclude: ['**/__mocks__/**', '**/__tests__/**', '**/index.ts'],
+        exclude: [
+          '**/__mocks__/**',
+          '**/__tests__/**',
+          '**/index.ts',
+          'src/interfaces/'
+        ],
         extension: ['.ts'],
         include: ['src'],
         provider: 'v8',
-        reporter: [ci ? 'lcovonly' : 'html', 'text'],
+        reporter: [...(ci ? [] : (['html'] as const)), 'lcovonly', 'text'],
         reportsDirectory: './coverage',
         skipFull: false
       },

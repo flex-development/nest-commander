@@ -2,6 +2,7 @@
 
 [![github release](https://img.shields.io/github/v/release/flex-development/nest-commander.svg?include_prereleases&sort=semver)](https://github.com/flex-development/nest-commander/releases/latest)
 [![npm](https://img.shields.io/npm/v/@flex-development/nest-commander.svg)](https://npmjs.com/package/@flex-development/nest-commander)
+[![codecov](https://codecov.io/gh/flex-development/nest-commander/branch/main/graph/badge.svg?token=GcyvLXLmzn)](https://codecov.io/gh/flex-development/nest-commander)
 [![module type: esm](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
 [![license](https://img.shields.io/github/license/flex-development/nest-commander.svg)](LICENSE.md)
 [![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits&logoColor=ffffff)](https://conventionalcommits.org/)
