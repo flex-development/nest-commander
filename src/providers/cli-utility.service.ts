@@ -5,8 +5,10 @@
 
 import {
   cast,
+  fallback,
   ifelse,
   includes,
+  isNIL,
   lowercase,
   objectify,
   select,
@@ -163,7 +165,7 @@ class CliUtilityService {
       /(?<pattern>^[^/].+|(?:(?<=(?:^\/)).+(?=\/(?<flags>(?<=\/)\w+)?)))/
 
     // parse regex string
-    const [, pattern = '', flags] = regex.exec(val) ?? []
+    const [, pattern = '', flags] = fallback(regex.exec(val), [], isNIL)
 
     return new RegExp(pattern, flags)
   }
