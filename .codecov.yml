@@ -101,6 +101,7 @@ ignore:
   - '**/__tests__/**'
   - '**/index.ts'
   - src/interfaces/
+  - src/metadata/
   - src/types/
 
 profiling:
