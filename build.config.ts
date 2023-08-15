@@ -15,10 +15,17 @@ import tsconfig from './tsconfig.build.json' assert { type: 'json' }
  */
 const config: Config = defineBuildConfig({
   charset: 'utf8',
-  entries: [{ dts: 'only' }, { dts: false }],
+  entries: [
+    { dts: 'only' },
+    { dts: false, pattern: ['abstracts/**'] },
+    {
+      dts: false,
+      pattern: ['*.ts', 'providers/**'],
+      sourceRoot: 'file' + pathe.delimiter + pathe.sep.repeat(2),
+      sourcemap: true
+    }
+  ],
   minifySyntax: true,
-  sourceRoot: 'file' + pathe.delimiter + pathe.sep.repeat(2),
-  sourcemap: true,
   target: [
     pkg.engines.node.replace(/^\D+/, 'node'),
     tsconfig.compilerOptions.target
