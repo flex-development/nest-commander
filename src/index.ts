@@ -4,5 +4,6 @@
  */
 
 export * from './abstracts'
+export type * from './interfaces'
 export * from './providers'
 export type * from './types'
