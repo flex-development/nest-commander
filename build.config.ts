@@ -17,10 +17,10 @@ const config: Config = defineBuildConfig({
   charset: 'utf8',
   entries: [
     { dts: 'only' },
-    { dts: false, pattern: ['abstracts/**'] },
+    { dts: false, pattern: ['abstracts/**', 'enums/**'] },
     {
       dts: false,
-      pattern: ['*.ts', 'providers/**'],
+      pattern: ['*.ts', 'providers/**', 'utils/**'],
       sourceRoot: 'file' + pathe.delimiter + pathe.sep.repeat(2),
       sourcemap: true
     }
