@@ -101,6 +101,7 @@ ignore:
   - '**/__tests__/**'
   - '**/index.ts'
   - src/interfaces/
+  - src/types/
 
 profiling:
   critical_files_paths: []
