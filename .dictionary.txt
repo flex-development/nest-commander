@@ -1,6 +1,7 @@
 ardatan
 attw
 bdougie
+booleanish
 cefc
 codecov
 commitlintrc

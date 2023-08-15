@@ -14,6 +14,7 @@ import {
   select,
   split,
   trim,
+  type Booleanish,
   type EmptyObject,
   type Float,
   type Integer,
@@ -30,6 +31,22 @@ import { Injectable } from '@nestjs/common'
  */
 @Injectable()
 class CliUtilityService {
+  /**
+   * Array containing choices for boolean flags.
+   *
+   * @public
+   * @static
+   * @member {Extract<Booleanish, string>[]} BOOLEAN_CHOICES
+   */
+  public static BOOLEAN_CHOICES: Extract<Booleanish, string>[] = [
+    '0',
+    '1',
+    'false',
+    'n',
+    'true',
+    'y'
+  ]
+
   /**
    * Converts a string to a boolean.
    *

@@ -1,10 +1,16 @@
 /**
  * @file Unit Tests - CliUtilityService
- * @module mkbuild/cli/providers/tests/unit/CliUtilityService
+ * @module nest-commander/providers/tests/unit/CliUtilityService
  */
 
 import * as mlly from '@flex-development/mlly'
-import { keys, type OneOrMany, type Primitive } from '@flex-development/tutils'
+import {
+  isBooleanish,
+  isString,
+  keys,
+  type OneOrMany,
+  type Primitive
+} from '@flex-development/tutils'
 import TestSubject from '../cli-utility.service'
 
 describe('unit:providers/CliUtilityService', () => {
@@ -12,6 +18,14 @@ describe('unit:providers/CliUtilityService', () => {
 
   beforeAll(() => {
     subject = new TestSubject()
+  })
+
+  describe('.BOOLEAN_CHOICES', () => {
+    it('should be array containing booleanish strings', () => {
+      expect(TestSubject.BOOLEAN_CHOICES).to.satisfy((choices: unknown[]) => {
+        return choices.every(choice => isString(choice) && isBooleanish(choice))
+      })
+    })
   })
 
   describe('#parseBoolean', () => {
