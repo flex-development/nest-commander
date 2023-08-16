@@ -3,7 +3,8 @@
  * @module nest-commander/interfaces/tests/unit-d/ArgumentOptions
  */
 
-import type { Fn, Optional, Primitive, Times } from '@flex-development/tutils'
+import type { ArgumentFallback } from '#src/types'
+import type { Fn, Optional, Times } from '@flex-development/tutils'
 import type * as commander from 'commander'
 import type TestSubject from '../options-argument.interface'
 
@@ -20,10 +21,10 @@ describe('unit-d:interfaces/ArgumentOptions', () => {
       .toEqualTypeOf<Optional<commander.Argument['description']>>()
   })
 
-  it('should match [fallback?: Primitive]', () => {
+  it('should match [fallback?: ArgumentFallback]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('fallback')
-      .toEqualTypeOf<Primitive>()
+      .toEqualTypeOf<Optional<ArgumentFallback>>()
   })
 
   it('should match [parser?<T>(value: string, previous?: T): T]', () => {

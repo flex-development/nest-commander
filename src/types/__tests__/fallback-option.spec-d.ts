@@ -4,7 +4,7 @@
  */
 
 import type { JsonValue, Optional } from '@flex-development/tutils'
-import type TestSubject from '../option-fallback'
+import type TestSubject from '../fallback-option'
 
 describe('unit-d:types/OptionFallback', () => {
   it('should match [description?: string]', () => {

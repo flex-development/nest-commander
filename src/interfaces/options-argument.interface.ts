@@ -3,7 +3,7 @@
  * @module nest-commander/interfaces/ArgumentOptions
  */
 
-import type { Primitive } from '@flex-development/tutils'
+import type { ArgumentFallback } from '#src/types'
 import type * as commander from 'commander'
 
 /**
@@ -23,9 +23,13 @@ interface ArgumentOptions {
   description?: commander.Argument['description']
 
   /**
-   * Default value.
+   * Default value configuration.
+   *
+   * @see {@linkcode ArgumentFallback}
+   *
+   * @default {}
    */
-  fallback?: Primitive
+  fallback?: ArgumentFallback
 
   /**
    * Parses an argument `value`.
