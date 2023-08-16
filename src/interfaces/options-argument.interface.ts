@@ -8,12 +8,15 @@ import type * as commander from 'commander'
 
 /**
  * Command argument options.
- *
- * @see {@linkcode commander.Command.argument}
  */
 interface ArgumentOptions {
   /**
-   * Description to be displayed in command help text.
+   * Array containing valid argument values.
+   */
+  choices?: string[]
+
+  /**
+   * Description to display in command help text.
    *
    * @default ''
    */
@@ -23,6 +26,17 @@ interface ArgumentOptions {
    * Default value.
    */
   fallback?: Primitive
+
+  /**
+   * Parses an argument `value`.
+   *
+   * @template T - Parsed argument value type
+   *
+   * @param {string} value - Value to parse
+   * @param {T?} [previous] - Previous argument value
+   * @return {T} Parsed argument value
+   */
+  parser?<T = string>(value: string, previous?: T): T
 
   /**
    * Argument syntax.
