@@ -10,7 +10,15 @@
  */
 const config = {
   extends: ['./.eslintrc.base.cjs'],
-  overrides: [...require('./.eslintrc.base.cjs').overrides],
+  overrides: [
+    ...require('./.eslintrc.base.cjs').overrides,
+    {
+      files: ['src/models/options-program.model.ts'],
+      rules: {
+        'unicorn/no-process-exit': 0
+      }
+    }
+  ],
   root: true
 }
 
