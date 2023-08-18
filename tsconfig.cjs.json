@@ -5,8 +5,6 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "noEmit": false,
-    "module": "commonjs",
-    "moduleResolution": "nodenext",
     "outDir": ".",
     "verbatimModuleSyntax": false
   },

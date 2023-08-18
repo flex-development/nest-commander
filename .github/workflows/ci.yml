@@ -237,6 +237,7 @@ jobs:
           - ${{ needs.preflight.outputs.version-typescript }}
           - latest
           - 5.0.4
+          - 5.1.6
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
