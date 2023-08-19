@@ -14,7 +14,8 @@ import MetadataName from './metadata-name'
 const MetadataKey = Object.freeze({
   COMMAND: metakey(MetadataName.COMMAND),
   OPTION: metakey(MetadataName.OPTION),
-  RUNNER: metakey(MetadataName.RUNNER)
+  RUNNER: metakey(MetadataName.RUNNER),
+  SUBCOMMAND: metakey(MetadataName.SUBCOMMAND)
 })
 
 export default MetadataKey

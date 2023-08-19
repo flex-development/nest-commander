@@ -11,7 +11,8 @@
 enum MetadataName {
   COMMAND = 'Command',
   OPTION = 'Option',
-  RUNNER = 'Runner'
+  RUNNER = 'Runner',
+  SUBCOMMAND = 'Subcommand'
 }
 
 export default MetadataName

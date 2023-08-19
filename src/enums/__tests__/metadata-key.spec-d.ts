@@ -25,4 +25,10 @@ describe('unit-d:enums/MetadataKey', () => {
       .toHaveProperty('RUNNER')
       .toEqualTypeOf<Metakey<MetadataName.RUNNER>>()
   })
+
+  it('should match [SUBCOMMAND = Metakey<MetadataName.SUBCOMMAND>]', () => {
+    expectTypeOf<typeof TestSubject>()
+      .toHaveProperty('SUBCOMMAND')
+      .toEqualTypeOf<Metakey<MetadataName.SUBCOMMAND>>()
+  })
 })

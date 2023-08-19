@@ -23,7 +23,7 @@ const config: Config = defineBuildConfig({
     },
     {
       dts: false,
-      pattern: ['*.ts', 'providers/**', 'utils/**'],
+      pattern: ['*.ts', 'decorators/**', 'providers/**', 'utils/**'],
       sourceRoot: 'file' + pathe.delimiter + pathe.sep.repeat(2),
       sourcemap: true
     }

@@ -23,4 +23,10 @@ describe('unit-d:enums/MetadataName', () => {
       .toHaveProperty('RUNNER')
       .toMatchTypeOf<'Runner'>()
   })
+
+  it('should match [SUBCOMMAND = "Subcommand"]', () => {
+    expectTypeOf<typeof TestSubject>()
+      .toHaveProperty('SUBCOMMAND')
+      .toMatchTypeOf<'Subcommand'>()
+  })
 })

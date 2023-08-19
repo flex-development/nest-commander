@@ -12,7 +12,7 @@ import { capitalize } from '@flex-development/tutils'
  *
  * @internal
  */
-type Metakey<T extends MetadataName> =
+type Metakey<T extends MetadataName = MetadataName> =
   `CommandRunner${pathe.Delimiter}${Capitalize<T>}Metadata`
 
 /**

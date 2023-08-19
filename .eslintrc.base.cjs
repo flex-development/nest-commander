@@ -888,7 +888,8 @@ const config = {
     {
       files: ['**/decorators/*.constraint.ts', '**/*.decorator.ts'],
       rules: {
-        '@typescript-eslint/ban-types': 0
+        '@typescript-eslint/ban-types': 0,
+        '@typescript-eslint/no-invalid-void-type': 0
       }
     },
     {
