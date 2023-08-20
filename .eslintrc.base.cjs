@@ -326,7 +326,8 @@ const config = {
           2,
           {
             ignoreConditionalTests: true,
-            ignoreMixedLogicalExpressions: true
+            ignoreMixedLogicalExpressions: true,
+            ignorePrimitives: { string: true }
           }
         ],
         '@typescript-eslint/prefer-optional-chain': 2,
@@ -376,7 +377,7 @@ const config = {
           {
             allowAny: false,
             allowNullableBoolean: true,
-            allowNullableNumber: false,
+            allowNullableNumber: true,
             allowNullableObject: true,
             allowNullableString: true,
             allowNumber: true,
@@ -831,9 +832,9 @@ const config = {
         chai: true,
         describe: true,
         expect: true,
-        faker: fs.existsSync('node_modules/@faker-js/faker/package.json'),
+        faker: fs.existsSync('node_modules/@faker-js/faker'),
         it: true,
-        pf: fs.existsSync('node_modules/pretty-format/package.json'),
+        pf: fs.existsSync('node_modules/pretty-format'),
         suite: true,
         test: true,
         vi: true,

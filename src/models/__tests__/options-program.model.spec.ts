@@ -10,39 +10,6 @@ import TestSubject from '../options-program.model'
 
 describe('unit:models/ProgramOptions', () => {
   describe('constructor', () => {
-    it('should set #abortOnError', () => {
-      // Arrange
-      const abortOnError: boolean = false
-
-      // Act
-      const result = new TestSubject({ abortOnError })
-
-      // Expect
-      expect(result).to.have.property('abortOnError', abortOnError)
-    })
-
-    it('should set #autoFlushLogs', () => {
-      // Arrange
-      const autoFlushLogs: boolean = false
-
-      // Act
-      const result = new TestSubject({ autoFlushLogs })
-
-      // Expect
-      expect(result).to.have.property('autoFlushLogs', autoFlushLogs)
-    })
-
-    it('should set #bufferLogs', () => {
-      // Arrange
-      const bufferLogs: boolean = true
-
-      // Act
-      const result = new TestSubject({ bufferLogs })
-
-      // Expect
-      expect(result).to.have.property('bufferLogs', bufferLogs)
-    })
-
     it('should set #combine', () => {
       // Arrange
       const combine: boolean = true
@@ -98,17 +65,6 @@ describe('unit:models/ProgramOptions', () => {
       expect(result).to.have.property('exit', exit)
     })
 
-    it('should set #logger', () => {
-      // Arrange
-      const logger: false = false
-
-      // Act
-      const result = new TestSubject({ logger })
-
-      // Expect
-      expect(result).to.have.property('logger', logger)
-    })
-
     it('should set #passthrough', () => {
       // Arrange
       const passthrough: boolean = true
@@ -129,28 +85,6 @@ describe('unit:models/ProgramOptions', () => {
 
       // Expect
       expect(result).to.have.property('positional', positional)
-    })
-
-    it('should set #preview', () => {
-      // Arrange
-      const preview: boolean = true
-
-      // Act
-      const result = new TestSubject({ preview })
-
-      // Expect
-      expect(result).to.have.property('preview', preview)
-    })
-
-    it('should set #snapshot', () => {
-      // Arrange
-      const snapshot: boolean = true
-
-      // Act
-      const result = new TestSubject({ snapshot })
-
-      // Expect
-      expect(result).to.have.property('snapshot', snapshot)
     })
 
     it('should set #unknown', () => {

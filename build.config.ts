@@ -19,11 +19,17 @@ const config: Config = defineBuildConfig({
     { dts: 'only' },
     {
       dts: false,
-      pattern: ['abstracts/**', 'enums/**', 'models/**']
+      pattern: ['abstracts/**', 'enums/**']
     },
     {
       dts: false,
-      pattern: ['*.ts', 'decorators/**', 'providers/**', 'utils/**'],
+      pattern: [
+        '*.ts',
+        'decorators/**',
+        'models/**',
+        'providers/**',
+        'utils/**'
+      ],
       sourceRoot: 'file' + pathe.delimiter + pathe.sep.repeat(2),
       sourcemap: true
     }

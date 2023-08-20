@@ -19,9 +19,9 @@ describe('unit-d:interfaces/VersionOptions', () => {
       .toEqualTypeOf<Optional<string>>()
   })
 
-  it('should match [version?: string]', () => {
+  it('should match [version: string]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('version')
-      .toEqualTypeOf<Optional<string>>()
+      .toEqualTypeOf<string>()
   })
 })

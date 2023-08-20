@@ -6,18 +6,13 @@
 import type { VersionOptions } from '#src/interfaces'
 import type { DoneFn, ErrorFn, ExitFn } from '#src/types'
 import { fallback, noop } from '@flex-development/tutils'
-import type { LogLevel, LoggerService } from '@nestjs/common'
-import { NestApplicationContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
 
 /**
  * CLI program options.
  *
- * @see {@linkcode NestApplicationContextOptions}
- *
  * @class
- * @extends {NestApplicationContextOptions}
  */
-class ProgramOptions extends NestApplicationContextOptions {
+class ProgramOptions {
   /**
    * Alter parsing of short flags with optional values.
    *
@@ -36,6 +31,8 @@ class ProgramOptions extends NestApplicationContextOptions {
    *
    * @see {@linkcode DoneFn}
    *
+   * @default noop
+   *
    * @public
    * @instance
    * @member {DoneFn?} done
@@ -46,6 +43,8 @@ class ProgramOptions extends NestApplicationContextOptions {
    * Handles an error thrown by a command.
    *
    * @see {@linkcode ErrorFn}
+   *
+   * @default console.error
    *
    * @public
    * @instance
@@ -71,28 +70,13 @@ class ProgramOptions extends NestApplicationContextOptions {
    *
    * @see {@linkcode ExitFn}
    *
+   * @default e => process.exit(e.exitCode)
+   *
    * @public
    * @instance
    * @member {ExitFn?} exit
    */
   public exit?: ExitFn
-
-  /**
-   * Logger to use.
-   *
-   * Pass `false` to turn off logging.
-   *
-   * @see {@linkcode LogLevel}
-   * @see {@linkcode LoggerService}
-   *
-   * @default ['error','warn']
-   *
-   * @public
-   * @instance
-   * @override
-   * @member {(LoggerService | LogLevel[] | false)?} logger
-   */
-  public override logger?: LoggerService | LogLevel[] | false
 
   /**
    * Only process options that come before command arguments.
@@ -152,39 +136,25 @@ class ProgramOptions extends NestApplicationContextOptions {
    * @param {Partial<ProgramOptions>} [options={}] - CLI program options
    */
   constructor(options: Partial<ProgramOptions> = {}) {
-    super()
-
     const {
-      abortOnError,
-      autoFlushLogs,
-      bufferLogs,
       combine,
       done,
       error,
       excess,
       exit,
-      logger,
       passthrough,
       positional,
-      preview,
-      snapshot,
       unknown,
       version
     } = options
 
-    this.abortOnError = fallback(abortOnError, true)
-    this.autoFlushLogs = fallback(autoFlushLogs, true)
-    this.bufferLogs = fallback(bufferLogs, false)
     this.combine = fallback(combine, false)
     this.done = fallback(done, noop)
-    this.error = fallback(error, e => console.error(e.toString()))
+    this.error = fallback(error, console.error)
     this.excess = fallback(excess, false)
     this.exit = fallback(exit, e => process.exit(e.exitCode))
-    this.logger = fallback(logger, ['error', 'warn'])
     this.passthrough = fallback(passthrough, false)
     this.positional = fallback(positional, true)
-    this.preview = fallback(preview, false)
-    this.snapshot = fallback(snapshot, false)
     this.unknown = fallback(unknown, false)
     this.version = fallback(version, '')
   }

@@ -6,14 +6,9 @@
 import type { VersionOptions } from '#src/interfaces'
 import type { DoneFn, ErrorFn, ExitFn } from '#src/types'
 import type { Optional } from '@flex-development/tutils'
-import type { NestApplicationContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
 import type TestSubject from '../options-program.model'
 
 describe('unit-d:models/ProgramOptions', () => {
-  it('should extend NestApplicationContextOptions', () => {
-    expectTypeOf<TestSubject>().toMatchTypeOf<NestApplicationContextOptions>()
-  })
-
   it('should match [done?: DoneFn]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('done')

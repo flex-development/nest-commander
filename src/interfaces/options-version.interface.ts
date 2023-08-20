@@ -24,7 +24,7 @@ interface VersionOptions {
   /**
    * Program version.
    */
-  version?: string
+  version: string
 }
 
 export type { VersionOptions as default }
