@@ -3,20 +3,27 @@
  * @module nest-commander/metadata/CommandMetadata
  */
 
+import type { CommandRunner } from '#src/abstracts'
 import type { ArgumentOptions } from '#src/interfaces'
+import type { Constructor, OneOrMany } from '@flex-development/tutils'
 
 /**s
  * Command metadata.
- *
- * @todo subcommands
  */
 interface CommandMetadata {
+  /**
+   * Command aliases.
+   *
+   * @default []
+   */
+  aliases?: string[]
+
   /**
    * Arguments configuration.
    *
    * @see {@linkcode ArgumentOptions}
    */
-  arguments?: ArgumentOptions['syntax'] | ArgumentOptions[]
+  arguments?: ArgumentOptions['syntax'] | OneOrMany<ArgumentOptions>
 
   /**
    * Description to display in help text.
@@ -43,6 +50,11 @@ interface CommandMetadata {
    * @default false
    */
   root?: boolean
+
+  /**
+   * Subcommand providers.
+   */
+  subcommands?: Constructor<CommandRunner>[]
 }
 
 export type { CommandMetadata as default }

@@ -1,0 +1,76 @@
+/**
+ * @file ProgramFactory
+ * @module nest-commander/ProgramFactory
+ */
+
+import {
+  cast,
+  defaults,
+  define,
+  fallback,
+  type Constructor
+} from '@flex-development/tutils'
+import type { INestApplicationContext, LogLevel } from '@nestjs/common'
+import type { NestApplicationContextOptions as NestContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
+import { NestFactory } from '@nestjs/core'
+import type { CliApplicationContext } from './interfaces'
+import { ProgramOptions } from './models'
+import ProgramModule from './program.module'
+import { CommandRunnerService } from './providers'
+
+/**
+ * CLI program factory.
+ *
+ * @class
+ */
+class ProgramFactory {
+  /**
+   * Creates a CLI application context from a NestJS application context.
+   *
+   * @private
+   * @static
+   *
+   * @param {INestApplicationContext} app - NestJS application context
+   * @return {CliApplicationContext} CLI application context
+   */
+  static #context(app: INestApplicationContext): CliApplicationContext {
+    return define(cast<CliApplicationContext>(app), 'run', {
+      /* c8 ignore next 7 */ value: async function run(
+        options: { close?: boolean } = {}
+      ): Promise<void> {
+        await app.get(CommandRunnerService).run()
+        fallback(options.close, true) && (await app.close())
+        return void 0
+      }
+    })
+  }
+
+  /**
+   * Creates a CLI application context.
+   *
+   * @see {@linkcode CliApplicationContext}
+   * @see {@linkcode NestContextOptions}
+   * @see {@linkcode ProgramOptions}
+   *
+   * @public
+   * @static
+   * @async
+   *
+   * @param {Constructor<any>} AppModule - Root module
+   * @param {NestContextOptions & ProgramOptions} [options={}] - Context options
+   * @return {Promise<CliApplicationContext>} CLI application context
+   */
+  public static async create(
+    AppModule: Constructor<any>,
+    options: NestContextOptions & ProgramOptions = {}
+  ): Promise<CliApplicationContext> {
+    return this.#context(
+      await NestFactory.createApplicationContext(
+        ProgramModule.register(new ProgramOptions(options), AppModule),
+        defaults(options, { logger: cast<LogLevel[]>(['error', 'warn']) })
+      )
+    )
+  }
+}
+
+export default ProgramFactory

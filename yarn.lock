@@ -1477,6 +1477,7 @@ __metadata:
     "@flex-development/mkbuild": "npm:1.0.0-alpha.22"
     "@flex-development/mlly": "npm:1.0.0-alpha.18"
     "@flex-development/pathe": "npm:2.0.0"
+    "@flex-development/toggle-pkg-type": "npm:2.0.1"
     "@flex-development/tsconfig-utils": "npm:2.0.2"
     "@flex-development/tutils": "npm:6.0.0-alpha.21"
     "@golevelup/nestjs-discovery": "npm:4.0.0"
@@ -1484,6 +1485,7 @@ __metadata:
     "@nestjs/common": "npm:10.1.3"
     "@nestjs/core": "npm:10.1.3"
     "@nestjs/testing": "npm:10.1.3"
+    "@swc/core": "npm:1.3.78"
     "@types/chai": "npm:4.3.5"
     "@types/conventional-changelog": "npm:3.1.1"
     "@types/conventional-changelog-core": "npm:4.2.2"
@@ -1558,6 +1560,10 @@ __metadata:
   peerDependencies:
     "@nestjs/common": ">=10.0.0"
     "@nestjs/core": ">=10.0.0"
+    "@nestjs/testing": ">=10.0.0"
+  peerDependenciesMeta:
+    "@nestjs/testing":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -2604,6 +2610,120 @@ __metadata:
   version: 1.2.1
   resolution: "@stroncium/procfs@npm:1.2.1"
   checksum: bcfd50407c976dc30ca8e15ee2b8ebfef74dcbc49c4226a32fcce071f9fe62ec3016d0e8dbb56be4b277cd7db6133d5c9f27a7ad0790ee4e21c4d3e976514fde
+  languageName: node
+  linkType: hard
+
+"@swc/core-darwin-arm64@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-darwin-arm64@npm:1.3.78"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@swc/core-darwin-x64@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-darwin-x64@npm:1.3.78"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm-gnueabihf@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.78"
+  conditions: os=linux & cpu=arm
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm64-gnu@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.78"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm64-musl@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.78"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-x64-gnu@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.78"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-x64-musl@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.78"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-arm64-msvc@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.78"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-ia32-msvc@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.78"
+  conditions: os=win32 & cpu=ia32
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-x64-msvc@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.78"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@swc/core@npm:1.3.78":
+  version: 1.3.78
+  resolution: "@swc/core@npm:1.3.78"
+  dependencies:
+    "@swc/core-darwin-arm64": "npm:1.3.78"
+    "@swc/core-darwin-x64": "npm:1.3.78"
+    "@swc/core-linux-arm-gnueabihf": "npm:1.3.78"
+    "@swc/core-linux-arm64-gnu": "npm:1.3.78"
+    "@swc/core-linux-arm64-musl": "npm:1.3.78"
+    "@swc/core-linux-x64-gnu": "npm:1.3.78"
+    "@swc/core-linux-x64-musl": "npm:1.3.78"
+    "@swc/core-win32-arm64-msvc": "npm:1.3.78"
+    "@swc/core-win32-ia32-msvc": "npm:1.3.78"
+    "@swc/core-win32-x64-msvc": "npm:1.3.78"
+  peerDependencies:
+    "@swc/helpers": ^0.5.0
+  dependenciesMeta:
+    "@swc/core-darwin-arm64":
+      optional: true
+    "@swc/core-darwin-x64":
+      optional: true
+    "@swc/core-linux-arm-gnueabihf":
+      optional: true
+    "@swc/core-linux-arm64-gnu":
+      optional: true
+    "@swc/core-linux-arm64-musl":
+      optional: true
+    "@swc/core-linux-x64-gnu":
+      optional: true
+    "@swc/core-linux-x64-musl":
+      optional: true
+    "@swc/core-win32-arm64-msvc":
+      optional: true
+    "@swc/core-win32-ia32-msvc":
+      optional: true
+    "@swc/core-win32-x64-msvc":
+      optional: true
+  peerDependenciesMeta:
+    "@swc/helpers":
+      optional: true
+  checksum: 289f868bb1849a23eaab81cf921ae232799d31750cf3467a9e19d62402645993f56738003e29bd6b0efee53330afdaad906db4865308df0e64cae294fa9763f1
   languageName: node
   linkType: hard
 

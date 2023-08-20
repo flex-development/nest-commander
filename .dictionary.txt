@@ -26,6 +26,7 @@ nvmrc
 pathe
 pkgs
 preid
+swcrc
 tscu
 unstub
 vates

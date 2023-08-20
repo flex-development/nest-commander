@@ -4,20 +4,15 @@
  */
 
 import type { OptionFallback } from '#src/types'
-import type {
-  EmptyArray,
-  Fn,
-  OneOrMany,
-  Optional
-} from '@flex-development/tutils'
+import type { OneOrMany, Optional } from '@flex-development/tutils'
 import type * as commander from 'commander'
 import type TestSubject from '../option.metadata'
 
 describe('unit-d:metadata/OptionMetadata', () => {
-  it('should match [choices?: Fn<EmptyArray, string[]> | string[]]', () => {
+  it('should match [choices?: string[]]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('choices')
-      .toEqualTypeOf<Optional<Fn<EmptyArray, string[]> | string[]>>()
+      .toEqualTypeOf<Optional<string[]>>()
   })
 
   it('should match [conflicts?: OneOrMany<string>]', () => {
@@ -66,9 +61,9 @@ describe('unit-d:metadata/OptionMetadata', () => {
       .toEqualTypeOf<Optional<boolean>>()
   })
 
-  it('should match [preset?: unknown]', () => {
+  it('should match [preset?: string]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('preset')
-      .toEqualTypeOf<unknown>()
+      .toEqualTypeOf<Optional<string>>()
   })
 })

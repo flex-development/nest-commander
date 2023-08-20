@@ -6,7 +6,7 @@
 import type * as commander from 'commander'
 
 /**
- * CLI command model.
+ * Encapsulates command action logic.
  *
  * @abstract
  * @class
@@ -24,12 +24,14 @@ abstract class CommandRunner {
   protected command!: commander.Command
 
   /**
-   * Sets the current command instance.
+   * Set the current command.
+   *
+   * @see {@linkcode commander.Command}
    *
    * @public
    *
    * @param {commander.Command} command - New command instance
-   * @return {this} Command runner
+   * @return {this} `this` command runner
    */
   public setCommand(command: commander.Command): this {
     this.command = command
@@ -37,13 +39,13 @@ abstract class CommandRunner {
   }
 
   /**
-   * Runs the command.
+   * Run the command.
    *
    * @public
    * @abstract
    *
-   * @param {commander.Command['args']} args - Command arguments
-   * @param {commander.OptionValues} options - Command options
+   * @param {commander.Command['args']} args - Parsed command arguments
+   * @param {commander.OptionValues} options - Parsed command options
    * @return {Promise<void> | void} Nothing when complete
    */
   public abstract run(

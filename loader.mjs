@@ -97,9 +97,13 @@ export const load = async (url, context) => {
     })
 
     // emit decorator metadata
+    DECORATOR_REGEX.lastIndex = 0
     if (DECORATOR_REGEX.test(source)) {
       const { outputText } = ts.transpileModule(source, {
-        compilerOptions: { ...compilerOptions, sourceMap: false },
+        compilerOptions: tscu.normalizeCompilerOptions({
+          ...compilerOptions,
+          sourceMap: false
+        }),
         fileName: url
       })
 

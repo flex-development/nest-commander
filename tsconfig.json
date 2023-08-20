@@ -29,11 +29,13 @@
     "noUnusedParameters": false,
     "outDir": "dist",
     "paths": {
+      "#examples/*": ["examples/*"],
       "#fixtures/*": ["__fixtures__/*"],
       "#pkg": ["package.json"],
       "#src": ["src/index"],
       "#src/*": ["src/*"],
-      "#tests/*": ["__tests__/*"]
+      "#tests/*": ["__tests__/*"],
+      "@flex-development/nest-commander": ["src/index"]
     },
     "preserveConstEnums": true,
     "preserveSymlinks": false,

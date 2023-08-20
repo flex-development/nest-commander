@@ -381,6 +381,11 @@
       "icon": "config"
     },
     {
+      "extensions": ["testing"],
+      "format": "svg",
+      "icon": "test"
+    },
+    {
       "extensions": ["types"],
       "format": "svg",
       "icon": "typings"

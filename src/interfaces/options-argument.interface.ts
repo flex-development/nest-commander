@@ -32,17 +32,6 @@ interface ArgumentOptions {
   fallback?: ArgumentFallback
 
   /**
-   * Parses an argument `value`.
-   *
-   * @template T - Parsed argument value type
-   *
-   * @param {string} value - Value to parse
-   * @param {T?} [previous] - Previous argument value
-   * @return {T} Parsed argument value
-   */
-  parser?<T = string>(value: string, previous?: T): T
-
-  /**
    * Argument syntax.
    */
   syntax: string

@@ -28,6 +28,7 @@ const config: Config = defineBuildConfig({
         'decorators/**',
         'models/**',
         'providers/**',
+        'testing/**',
         'utils/**'
       ],
       sourceRoot: 'file' + pathe.delimiter + pathe.sep.repeat(2),

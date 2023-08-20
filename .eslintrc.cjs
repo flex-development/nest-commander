@@ -17,6 +17,12 @@ const config = {
       rules: {
         'unicorn/no-process-exit': 0
       }
+    },
+    {
+      files: ['src/testing/command-test.factory.ts'],
+      rules: {
+        'unicorn/prefer-module': 0
+      }
     }
   ],
   root: true

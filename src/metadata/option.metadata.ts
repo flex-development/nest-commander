@@ -4,7 +4,7 @@
  */
 
 import type { OptionFallback } from '#src/types'
-import type { EmptyArray, Fn, OneOrMany } from '@flex-development/tutils'
+import type { OneOrMany } from '@flex-development/tutils'
 import type * as commander from 'commander'
 
 /**
@@ -14,9 +14,9 @@ import type * as commander from 'commander'
  */
 interface OptionMetadata {
   /**
-   * Array containing option values, or a function that generates such an array.
+   * Array containing valid option values.
    */
-  choices?: Fn<EmptyArray, string[]> | string[]
+  choices?: string[]
 
   /**
    * Names of options that conflict with this option.
@@ -81,7 +81,7 @@ interface OptionMetadata {
   /**
    * Preset to use when option is specified without an option-argument.
    */
-  preset?: unknown
+  preset?: string
 }
 
 export type { OptionMetadata as default }
