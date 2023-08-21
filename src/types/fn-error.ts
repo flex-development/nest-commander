@@ -11,6 +11,6 @@
  * @param {T} error - Error thrown
  * @return {void} Nothing when complete
  */
-type ErrorFn = <T extends Error>(error: T) => void
+type ErrorFn<T extends Error = Error> = (error: T) => void
 
 export type { ErrorFn as default }

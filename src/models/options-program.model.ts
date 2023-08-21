@@ -48,9 +48,9 @@ class ProgramOptions {
    *
    * @public
    * @instance
-   * @member {ErrorFn?} error
+   * @member {ErrorFn<any>?} error
    */
-  public error?: ErrorFn
+  public error?: ErrorFn<any>
 
   /**
    * Allow excess command-arguments on the command line.
