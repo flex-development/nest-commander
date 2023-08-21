@@ -35,9 +35,9 @@ class ProgramOptions {
    *
    * @public
    * @instance
-   * @member {DoneFn?} done
+   * @member {DoneFn<any>?} done
    */
-  public done?: DoneFn
+  public done?: DoneFn<any>
 
   /**
    * Handles an error thrown by a command.

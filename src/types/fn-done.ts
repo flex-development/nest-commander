@@ -16,7 +16,7 @@ import type * as commander from 'commander'
  * @param {Program} program - CLI program instance
  * @return {Promise<void> | void} Nothing when complete
  */
-type DoneFn = <T extends commander.OptionValues>(
+type DoneFn<T extends commander.OptionValues = commander.OptionValues> = (
   argv: string[],
   opts: T,
   program: Program
