@@ -1554,7 +1554,7 @@ __metadata:
     prettier-plugin-sh: "npm:0.13.1"
     pretty-format: "npm:29.6.3"
     reflect-metadata: "npm:0.1.13"
-    rxjs: "npm:8.0.0-alpha.11"
+    rxjs: "npm:8.0.0-alpha.12"
     semver: "npm:7.5.4"
     tempfile: "npm:5.0.0"
     trash-cli: "npm:5.0.0"
@@ -9031,10 +9031,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:8.0.0-alpha.11":
-  version: 8.0.0-alpha.11
-  resolution: "rxjs@npm:8.0.0-alpha.11"
-  checksum: 3d50e9b25c1d7b841e32e0fdbb2536e36670774b7cf5781741186add8fcfe9ba3213ea8e562da70b2f20bad596ab00c8286ec78071886205f04447c091b0f62a
+"rxjs@npm:8.0.0-alpha.12":
+  version: 8.0.0-alpha.12
+  resolution: "rxjs@npm:8.0.0-alpha.12"
+  checksum: 979b1c04ce73fe1949de5992c0a75164040d902c9e7a95fa8bfb7b29645db0bb2a1471191b4c06d639905edb959b5521802d7d058772dc08f716e6091006b908
   languageName: node
   linkType: hard
 
