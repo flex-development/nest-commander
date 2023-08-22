@@ -35,6 +35,7 @@ const config: Config = defineBuildConfig({
       sourcemap: true
     }
   ],
+  keepNames: true,
   minifySyntax: true,
   target: [
     pkg.engines.node.replace(/^\D+/, 'node'),

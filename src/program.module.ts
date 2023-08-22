@@ -5,7 +5,7 @@
 
 import { sift } from '@flex-development/tutils'
 import { DiscoveryModule } from '@golevelup/nestjs-discovery'
-import type { DynamicModule, Type } from '@nestjs/common'
+import { Module, type DynamicModule, type Type } from '@nestjs/common'
 import { Program, ProgramOptions } from './models'
 import {
   CliUtilityService,
@@ -18,6 +18,7 @@ import {
  *
  * @class
  */
+@Module({})
 class ProgramModule {
   /**
    * Creates a global CLI program module.
