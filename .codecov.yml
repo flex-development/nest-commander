@@ -48,10 +48,6 @@ component_management:
       name: testing
       paths:
         - src/testing/*.ts
-    - component_id: tokens
-      name: tokens
-      paths:
-        - src/tokens/*.ts
     - component_id: utils
       name: utils
       paths:
