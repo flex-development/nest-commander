@@ -65,7 +65,7 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
            * @const {RegExp} CONSTRUCTOR_PARAMS_REGEX
            */
           const CONSTRUCTOR_PARAMS_REGEX: RegExp =
-            /(?<=constructor\(\s*)([^\n].+?)(?=\n? *?\) ?{)/gs
+            /(?<=constructor\(\s*)([^\n)].+?)(?=\n? *?\) ?{)/gs
 
           // add "/* c8 ignore next */" before constructor parameters
           for (const [match] of code.matchAll(CONSTRUCTOR_PARAMS_REGEX)) {

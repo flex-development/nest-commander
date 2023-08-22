@@ -72,6 +72,7 @@ class CommandRunnerService implements OnModuleInit {
     protected readonly help: HelpService
   ) {
     this.commands = []
+    this.program.createHelp = constant(this.help)
     this.subcommands = []
   }
 

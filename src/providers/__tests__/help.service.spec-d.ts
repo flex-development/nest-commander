@@ -17,13 +17,9 @@ describe('unit-d:providers/HelpService', () => {
       .toEqualTypeOf<number>()
   })
 
-  it('should match [indent: number]', () => {
-    expectTypeOf<TestSubject>().toHaveProperty('indent').toEqualTypeOf<number>()
-  })
-
-  it('should match [linewidth: number]', () => {
+  it('should match [tabsize: number]', () => {
     expectTypeOf<TestSubject>()
-      .toHaveProperty('linewidth')
+      .toHaveProperty('tabsize')
       .toEqualTypeOf<number>()
   })
 })

@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`unit:providers/HelpService > #formatHelp > should return formatted help text 1`] = `
+"Description
+  https://github.com/felixge/node-dateformat
+
+Usage
+  $ dateformat [options] [command] [date]
+
+Arguments
+  date                date string or timestamp
+
+Options
+  -g, --gmt           convert local time to gmt time (default: false)
+  -m, --mask <mask>   date format (default: \\"ddd mmm dd yyyy HH:MM:ss\\")
+  -u, --utc           convert local time to utc time (default: false)
+      --verbose       enable debug output
+  -h, --help          display help for command
+  -v, --version       print version number
+
+Commands
+  timezone|tz [date]  get proper timezone abbreviation or timezone offset
+  help [command]      display help for command
+"
+`;
