@@ -4,17 +4,21 @@
  */
 
 import DateformatModule from '#examples/dateformat/app.module'
+import TimezoneCommand from '#examples/dateformat/timezone.command'
 import StringUtilsModule from '#examples/string-utils/app.module'
+import JoinCommand from '#examples/string-utils/join.command'
 import TogglePkgTypeModule from '#examples/toggle-pkg-type/app.module'
-import { Program, ProgramOptions } from '#src/models'
+import ToggleCommand from '#examples/toggle-pkg-type/toggle.command'
+import type { CommandRunner } from '#src/abstracts'
+import { Program } from '#src/models'
 import { CommandTestFactory } from '#src/testing'
+import type { DoneFn, ErrorFn, ExitFn } from '#src/types'
 import type { Mock } from '#tests/interfaces'
-import togglePkgType from '@flex-development/toggle-pkg-type'
-import { DOT, at, get, type Times } from '@flex-development/tutils'
+import * as mlly from '@flex-development/mlly'
+import { DOT, at, fallback, type EmptyArray } from '@flex-development/tutils'
+import type { Type } from '@nestjs/common'
 import { TestingModule } from '@nestjs/testing'
 import { CommanderError } from 'commander'
-
-vi.mock('@flex-development/toggle-pkg-type')
 
 describe('integration:ProgramModule', () => {
   let exit: Mock<NodeJS.Process['exit']>
@@ -36,154 +40,87 @@ describe('integration:ProgramModule', () => {
     vi.spyOn(process.stdout, 'write').mockImplementation(stdout)
   })
 
-  describe('error handling', () => {
+  describe.each<[string, Type, Type<CommandRunner>, [string, ...string[]]]>([
+    [
+      'multiple commands',
+      StringUtilsModule,
+      JoinCommand,
+      ['join', 'x', 'y', '-s', DOT]
+    ],
+    [
+      'root command',
+      TogglePkgTypeModule,
+      ToggleCommand,
+      ['--id', mlly.toURL('package.json').href]
+    ],
+    [
+      'subcommands',
+      DateformatModule,
+      TimezoneCommand,
+      ['tz', new Date().toString()]
+    ]
+  ])('program with %s', (_, AppModule, Runner, args) => {
     let cmd: TestingModule
-    let options: ProgramOptions
+    let done: Mock<DoneFn>
+    let err_command_runner: Error
+    let error: Mock<ErrorFn>
+    let exit: Mock<ExitFn>
+    let program: Program
+    let runner: CommandRunner
 
     beforeAll(async () => {
       cmd = await CommandTestFactory.createTestingCommand({
+        done: vi.fn().mockName('done'),
         error: vi.fn().mockName('error'),
         exit: vi.fn().mockName('exit'),
-        imports: [TogglePkgTypeModule]
+        imports: [AppModule],
+        version: faker.system.semver()
       })
 
-      options = cmd.get(ProgramOptions)
-    })
-
-    it('should call error handler on command error', async () => {
-      // Arrange
-      vi.mocked(togglePkgType).mockImplementationOnce(() => {
-        throw new Error('')
-      })
-
-      // Act
-      await CommandTestFactory.run(cmd)
-      const arg = at(vi.mocked(options.error!).mock.lastCall, 0)
-
-      // Expect
-      expect(options.error).toHaveBeenCalled()
-      expect(arg).to.be.instanceof(Error).and.have.property('message', '')
-    })
-
-    it('should call exit override on commander error', async () => {
-      // Act
-      await CommandTestFactory.run(cmd, ['1'])
-      const arg = at(vi.mocked(options.exit!).mock.lastCall, 0)
-
-      // Expect
-      expect(options.exit).toHaveBeenCalled()
-      expect(arg).to.be.instanceof(CommanderError)
-      expect(arg).to.have.property('code', 'commander.invalidArgument')
-      expect(arg).to.have.property('exitCode', 1)
-    })
-  })
-
-  describe('multiple commands', () => {
-    let cmd: TestingModule
-    let log: Mock<Console['log']>
-    let stdout: Mock<NodeJS.Process['stdout']['write']>
-
-    beforeAll(async () => {
-      cmd = await CommandTestFactory.createTestingCommand({
-        done: vi.fn().mockName('done'),
-        imports: [StringUtilsModule]
-      })
-
-      log = vi.fn().mockName('console.log')
-      stdout = vi.fn().mockName('process.stdout.write')
+      program = cmd.get(Program)
+      runner = cmd.get(Runner)
+      done = vi.mocked(program.config.done)
+      err_command_runner = new Error('CommandRunner.run error')
+      error = vi.mocked(program.config.error)
+      exit = vi.mocked(program.config.exit)
     })
 
     beforeEach(() => {
-      vi.spyOn(console, 'log').mockImplementation(log)
-      vi.spyOn(process.stdout, 'write').mockImplementation(stdout)
+      vi.spyOn(runner, 'run').mockImplementationOnce(vi.fn<EmptyArray>())
     })
 
-    it('should run command', async () => {
+    it('should handle command runner error', async () => {
       // Arrange
-      const cases: [string, ...string[]][] = [
-        ['alpha', 'z', 'y', 'x'],
-        ['join', 'x', 'y', '-s', DOT]
-      ]
-
-      // Act + Expect
-      for (const args of cases) {
-        await CommandTestFactory.run(cmd, args)
-        const command = cmd.get(Program).findCommand(args[0])!
-
-        expect(cmd.get(ProgramOptions).done).toHaveBeenCalledWith(
-          command.args,
-          command.optsWithGlobals(),
-          command
-        )
-      }
-    })
-  })
-
-  describe('root commands', () => {
-    let cmd: TestingModule
-
-    beforeAll(async () => {
-      cmd = await CommandTestFactory.createTestingCommand({
-        done: vi.fn().mockName('done'),
-        imports: [TogglePkgTypeModule],
-        version: get(
-          await import('@flex-development/toggle-pkg-type/package.json'),
-          'version'
-        )
+      vi.spyOn(runner, 'run').mockImplementationOnce(() => {
+        throw err_command_runner
       })
-
-      log = vi.fn().mockName('console.log')
-      stdout = vi.fn().mockName('process.stdout.write')
-    })
-
-    it('should run root command', async () => {
-      // Arrange
-      const id: string = faker.system.directoryPath()
-      const args: Times<3, string> = ['off', '-i', id]
-      const program: Program = cmd.get(Program)
 
       // Act
       await CommandTestFactory.run(cmd, args)
 
       // Expect
-      expect(cmd.get(ProgramOptions).done).toHaveBeenCalledWith(
-        program.args,
-        program.opts(),
-        program
-      )
-    })
-  })
-
-  describe('subcommands', () => {
-    let cmd: TestingModule
-    let log: Mock<Console['log']>
-    let stdout: Mock<NodeJS.Process['stdout']['write']>
-
-    beforeAll(async () => {
-      cmd = await CommandTestFactory.createTestingCommand({
-        done: vi.fn().mockName('done'),
-        imports: [DateformatModule]
-      })
-
-      log = vi.fn().mockName('console.log')
-      stdout = vi.fn().mockName('process.stdout.write')
+      expect(error).toHaveBeenCalledWith(err_command_runner)
     })
 
-    beforeEach(() => {
-      vi.spyOn(console, 'log').mockImplementation(log)
-      vi.spyOn(process.stdout, 'write').mockImplementation(stdout)
-    })
-
-    it('should run subcommand', async () => {
-      // Arrange
-      const args: Times<2, string> = ['tz', new Date().toString()]
-
+    it('should handle command-line argument parsing error', async () => {
       // Act
-      await CommandTestFactory.run(cmd, args)
-      const command = cmd.get(Program).findCommand(args[0])!
+      await CommandTestFactory.run(cmd, ['--test'])
 
       // Expect
-      expect(cmd.get(ProgramOptions).done).toHaveBeenCalledWith(
+      expect(exit).toHaveBeenCalledWith(expect.any(CommanderError))
+      expect(at(exit.mock.lastCall, 0)).to.have.property('exitCode', 1)
+    })
+
+    it('should run specified command', async () => {
+      // Act
+      await CommandTestFactory.run(cmd, args)
+      const command = fallback(program.findCommand(args[0]), program)
+
+      // Expect
+      expect(runner.run).toHaveBeenCalledOnce()
+      expect(runner.run).toHaveBeenCalledWith(command.args, command.opts())
+      expect(done).toHaveBeenCalledOnce()
+      expect(done).toHaveBeenCalledWith(
         command.args,
         command.optsWithGlobals(),
         command

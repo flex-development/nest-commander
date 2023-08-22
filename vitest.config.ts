@@ -55,6 +55,7 @@ const config: UserConfigExport = defineConfig((): UserConfig => {
           id: string
         ): Promise<Nullable<{ code: string }>> {
           // do nothing if source code does not contain decorators
+          DECORATOR_REGEX.lastIndex = 0
           if (!DECORATOR_REGEX.test(code)) return null
 
           /**

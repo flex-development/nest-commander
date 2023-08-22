@@ -82,7 +82,7 @@ class ToggleCommand extends CommandRunner {
   }
 
   /**
-   * Sets the current command instance.
+   * Set the current command instance.
    *
    * @see {@linkcode command}
    *

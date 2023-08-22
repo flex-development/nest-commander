@@ -272,8 +272,7 @@ class CommandRunnerService implements OnModuleInit {
     if (root) await this.command(root, this.program)
 
     // add commands
-    for (const m of metadata) {
-      if (m.command.root) continue
+    for (const m of select(metadata, m => !m.command.root)) {
       this.program.addCommand(await this.command(m), m.command)
     }
 
