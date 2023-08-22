@@ -1491,9 +1491,9 @@ __metadata:
     "@flex-development/tutils": "npm:6.0.0-alpha.21"
     "@golevelup/nestjs-discovery": "npm:4.0.0"
     "@graphql-eslint/eslint-plugin": "npm:3.20.1"
-    "@nestjs/common": "npm:10.2.0"
-    "@nestjs/core": "npm:10.2.0"
-    "@nestjs/testing": "npm:10.2.0"
+    "@nestjs/common": "npm:10.2.1"
+    "@nestjs/core": "npm:10.2.1"
+    "@nestjs/testing": "npm:10.2.1"
     "@swc/core": "npm:1.3.78"
     "@types/chai": "npm:4.3.5"
     "@types/conventional-changelog": "npm:3.1.1"
@@ -2403,9 +2403,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/common@npm:10.2.0":
-  version: 10.2.0
-  resolution: "@nestjs/common@npm:10.2.0"
+"@nestjs/common@npm:10.2.1":
+  version: 10.2.1
+  resolution: "@nestjs/common@npm:10.2.1"
   dependencies:
     iterare: "npm:1.2.1"
     tslib: "npm:2.6.1"
@@ -2420,13 +2420,13 @@ __metadata:
       optional: true
     class-validator:
       optional: true
-  checksum: 2cd8d8ee9250cf4326954b269c19ae3334df6773bfabbdb99d05feb51af420473a4c5dd79fbbbac67aebbd830dce237b3eb4204eddeb0c7c7244bbbf5148cfa0
+  checksum: c909976e1d057751d931d86ca011b8feac05d5c8e4c2ecbd58c05f23d72217c2f1c59eb79f733472b5756e6abb6734997cc77060a69b989a6013a6eecd8b722d
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:10.2.0":
-  version: 10.2.0
-  resolution: "@nestjs/core@npm:10.2.0"
+"@nestjs/core@npm:10.2.1":
+  version: 10.2.1
+  resolution: "@nestjs/core@npm:10.2.1"
   dependencies:
     "@nuxtjs/opencollective": "npm:0.3.2"
     fast-safe-stringify: "npm:2.1.1"
@@ -2448,13 +2448,13 @@ __metadata:
       optional: true
     "@nestjs/websockets":
       optional: true
-  checksum: 311f23ebe426657485dc7c9d1f0ff014f01280798645e82e56a15967508bc57ae1d0ec205368f516b439c9d6da7907b06be0ec1e8a60ad0a147a0595d1ef5cfe
+  checksum: e9718ccf05aca82e3eb9fb5216dc08e54795045231d2e294becdbcafe18037942d8aa56e21b6df1aa9de4ce59633f45262a3179e50ff9adb80f6e35fa596554a
   languageName: node
   linkType: hard
 
-"@nestjs/testing@npm:10.2.0":
-  version: 10.2.0
-  resolution: "@nestjs/testing@npm:10.2.0"
+"@nestjs/testing@npm:10.2.1":
+  version: 10.2.1
+  resolution: "@nestjs/testing@npm:10.2.1"
   dependencies:
     tslib: "npm:2.6.1"
   peerDependencies:
@@ -2467,7 +2467,7 @@ __metadata:
       optional: true
     "@nestjs/platform-express":
       optional: true
-  checksum: 2e93e6473ab5206b73170b7a39b47ec8b2d350b3fa8289c69db35cbd32b784b6a46677530ce255adb1261851d0f1b19f9e42732253dfb6481f46244be0360dd0
+  checksum: 700feab64bf4a64b2f394b7f52be4bd39e7fe9ded805bedc3749d51c6d055281f7a7e5a66579ba8c7c75a7d7f99faffd34c3aa16a2b75bae38990ada61bfde10
   languageName: node
   linkType: hard
 
