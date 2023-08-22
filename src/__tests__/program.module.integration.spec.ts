@@ -11,6 +11,7 @@ import TogglePkgTypeModule from '#examples/toggle-pkg-type/app.module'
 import ToggleCommand from '#examples/toggle-pkg-type/toggle.command'
 import type { CommandRunner } from '#src/abstracts'
 import { Program } from '#src/models'
+import { HelpService } from '#src/providers'
 import { CommandTestFactory } from '#src/testing'
 import type { DoneFn, ErrorFn, ExitFn } from '#src/types'
 import type { Mock } from '#tests/interfaces'
@@ -109,6 +110,17 @@ describe('integration:ProgramModule', () => {
       // Expect
       expect(exit).toHaveBeenCalledWith(expect.any(CommanderError))
       expect(at(exit.mock.lastCall, 0)).to.have.property('exitCode', 1)
+    })
+
+    it('should output help text when requested', async () => {
+      // Arrange
+      const expected: string = cmd.get(HelpService).formatHelp(program)
+
+      // Act
+      await CommandTestFactory.run(cmd, ['--help'])
+
+      // Expect
+      expect(stdout).toHaveBeenCalledWith(expected)
     })
 
     it('should run specified command', async () => {
