@@ -100,21 +100,49 @@ describe('functional:models/Program', () => {
     })
   })
 
+  describe('#findCommand', () => {
+    let subject: TestSubject
+
+    beforeAll(() => {
+      subject = new TestSubject({ name: 'string-utils' })
+      subject.addCommand(new commander.Command('alphabetize').alias('alpha'))
+      subject.addCommand(new commander.Command('join'))
+    })
+
+    it('should return matching command given command alias', () => {
+      expect(subject.findCommand('alpha')).to.be.instanceof(commander.Command)
+    })
+
+    it('should return matching command given command name', () => {
+      ;['alphabetize', 'join'].forEach(cmd => {
+        expect(subject.findCommand(cmd))
+          .to.be.instanceof(commander.Command)
+          .with.property('_name', cmd)
+      })
+    })
+
+    it('should return undefined if matching command is not found', () => {
+      expect(subject.findCommand('vin')).to.be.undefined
+    })
+  })
+
   describe('#parseAsync', () => {
     let args: string[]
     let done: Mock<DoneFn>
     let from: commander.ParseOptions['from']
+    let optsWithGlobals: Spy<TestSubject['optsWithGlobals']>
     let parseAsync: Spy<commander.Command['parseAsync']>
     let subject: TestSubject
 
     beforeAll(() => {
-      args = ['--test']
+      args = ['arg', '--test']
       done = vi.fn().mockName('done')
       from = 'user'
       subject = new TestSubject({ done })
     })
 
     beforeEach(async () => {
+      optsWithGlobals = vi.spyOn(subject, 'optsWithGlobals')
       parseAsync = vi.spyOn(commander.Command.prototype, 'parseAsync')
       parseAsync.mockImplementationOnce(vi.fn<EmptyArray>())
       await subject.parseAsync(args, { from })
@@ -125,8 +153,9 @@ describe('functional:models/Program', () => {
     })
 
     it('should run done callback', () => {
+      expect(optsWithGlobals).toHaveBeenCalledOnce()
       expect(done).toHaveBeenCalledWith(
-        args,
+        subject.args,
         subject.optsWithGlobals(),
         subject
       )

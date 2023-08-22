@@ -3,23 +3,22 @@
  * @module nest-commander/types/DoneFn
  */
 
-import type Program from '#src/models/program.model'
 import type * as commander from 'commander'
 
 /**
- * Callback ran after CLI program is successfully ran.
+ * Callback ran after command-line arguments are parsed.
  *
- * @template T - Option values type
+ * @template T - Parsed command options type
  *
- * @param {string[]} argv - Command line arguments
- * @param {T} opts - Merged local and global option values
- * @param {Program} program - CLI program instance
+ * @param {string[]} argv - Parsed command arguments
+ * @param {T} opts - Parsed command options
+ * @param {commander.Command} command - Command that was run
  * @return {Promise<void> | void} Nothing when complete
  */
 type DoneFn<T extends commander.OptionValues = commander.OptionValues> = (
   argv: string[],
   opts: T,
-  program: Program
+  command: commander.Command
 ) => Promise<void> | void
 
 export type { DoneFn as default }

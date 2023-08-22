@@ -6,25 +6,15 @@
 import DateformatModule from '#examples/dateformat/app.module'
 import StringUtilsModule from '#examples/string-utils/app.module'
 import TogglePkgTypeModule from '#examples/toggle-pkg-type/app.module'
-import { ProgramOptions } from '#src/models'
+import { Program, ProgramOptions } from '#src/models'
 import { CommandTestFactory } from '#src/testing'
 import type { Mock } from '#tests/interfaces'
 import togglePkgType from '@flex-development/toggle-pkg-type'
-import {
-  alphabetize,
-  at,
-  DOT,
-  get,
-  identity,
-  join,
-  type Times
-} from '@flex-development/tutils'
+import { DOT, at, get, type Times } from '@flex-development/tutils'
 import { TestingModule } from '@nestjs/testing'
 import { CommanderError } from 'commander'
-import { formatTimezone } from 'dateformat'
 
 vi.mock('@flex-development/toggle-pkg-type')
-vi.mock('dateformat')
 
 describe('integration:ProgramModule', () => {
   let exit: Mock<NodeJS.Process['exit']>
@@ -110,17 +100,22 @@ describe('integration:ProgramModule', () => {
 
     it('should run command', async () => {
       // Arrange
-      const args: Times<3, string> = ['z', 'y', 'x']
-      const args_a: Times<4, string> = ['alphabetize', ...args]
-      const args_j: Times<6, string> = ['join', ...args, '-s', DOT]
+      const cases: [string, ...string[]][] = [
+        ['alpha', 'z', 'y', 'x'],
+        ['join', 'x', 'y', '-s', DOT]
+      ]
 
-      // Act
-      await CommandTestFactory.run(cmd, args_a)
-      await CommandTestFactory.run(cmd, args_j)
+      // Act + Expect
+      for (const args of cases) {
+        await CommandTestFactory.run(cmd, args)
+        const command = cmd.get(Program).findCommand(args[0])!
 
-      // Expect
-      expect(log).toHaveBeenCalledWith(join(alphabetize(args, identity), ' '))
-      expect(log).toHaveBeenCalledWith(join(args, DOT))
+        expect(cmd.get(ProgramOptions).done).toHaveBeenCalledWith(
+          command.args,
+          command.optsWithGlobals(),
+          command
+        )
+      }
     })
   })
 
@@ -136,18 +131,26 @@ describe('integration:ProgramModule', () => {
           'version'
         )
       })
+
+      log = vi.fn().mockName('console.log')
+      stdout = vi.fn().mockName('process.stdout.write')
     })
 
     it('should run root command', async () => {
       // Arrange
       const id: string = faker.system.directoryPath()
       const args: Times<3, string> = ['off', '-i', id]
+      const program: Program = cmd.get(Program)
 
       // Act
       await CommandTestFactory.run(cmd, args)
 
       // Expect
-      expect(togglePkgType).toHaveBeenCalledWith(args[0], id)
+      expect(cmd.get(ProgramOptions).done).toHaveBeenCalledWith(
+        program.args,
+        program.opts(),
+        program
+      )
     })
   })
 
@@ -177,9 +180,14 @@ describe('integration:ProgramModule', () => {
 
       // Act
       await CommandTestFactory.run(cmd, args)
+      const command = cmd.get(Program).findCommand(args[0])!
 
       // Expect
-      expect(log).toHaveBeenCalledWith(formatTimezone(args[1]))
+      expect(cmd.get(ProgramOptions).done).toHaveBeenCalledWith(
+        command.args,
+        command.optsWithGlobals(),
+        command
+      )
     })
   })
 })

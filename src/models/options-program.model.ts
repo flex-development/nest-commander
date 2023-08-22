@@ -27,7 +27,7 @@ class ProgramOptions {
   public combine?: boolean
 
   /**
-   * Function to call after program is ran.
+   * Callback ran after command-line arguments are parsed.
    *
    * @see {@linkcode DoneFn}
    *

@@ -26,15 +26,15 @@ abstract class CommandRunner {
   /**
    * Set the current command.
    *
-   * @see {@linkcode commander.Command}
+   * @see {@linkcode command}
    *
    * @public
    *
-   * @param {commander.Command} command - New command instance
+   * @param {commander.Command} cmd - New command instance
    * @return {this} `this` command runner
    */
-  public setCommand(command: commander.Command): this {
-    this.command = command
+  public setCommand(cmd: commander.Command): this {
+    this.command = cmd
     return this
   }
 

@@ -5,26 +5,29 @@
 
 import {
   cast,
+  fallback,
   get,
+  includes,
   isEmptyString,
   isUndefined,
   keys,
   trim,
   type IfUndefined,
+  type Nilable,
   type Optional
 } from '@flex-development/tutils'
-import * as commander from 'commander'
+import { Command, type ParseOptions } from 'commander'
 import ProgramOptions from './options-program.model'
 
 /**
  * CLI program model.
  *
- * @see {@linkcode commander.Command}
+ * @see {@linkcode Command}
  *
  * @class
- * @extends {commander.Command}
+ * @extends {Command}
  */
-class Program extends commander.Command {
+class Program extends Command {
   /**
    * Program configuration options.
    *
@@ -86,13 +89,31 @@ class Program extends commander.Command {
    *
    * @public
    *
-   * @param {commander.Command} command - Command to copy settings to
+   * @param {Command} command - Command to copy settings to
    * @return {typeof command} Updated `command`
    */
-  public enforceSettings(command: commander.Command): typeof command {
+  public enforceSettings(command: Command): typeof command {
     command.allowUnknownOption(this.config.unknown)
     command.passThroughOptions(this.config.passthrough)
     return command.copyInheritedSettings(this)
+  }
+
+  /**
+   * Find a command by name or alias.
+   *
+   * @public
+   *
+   * @param {Nilable<string>} cmd - Command name or alias
+   * @param {Command?} [parent=this] - Parent command
+   * @return {Optional<Command>} Command named `name` or `undefined`
+   */
+  public findCommand(
+    cmd: Nilable<string>,
+    parent: Command = this
+  ): Optional<Command> {
+    return parent.commands.find(command => {
+      return command.name() === cmd || includes(command.aliases(), cmd)
+    })
   }
 
   /**
@@ -111,16 +132,27 @@ class Program extends commander.Command {
    * @async
    *
    * @param {ReadonlyArray<string>?} [argv=process.argv] - CLI arguments
-   * @param {commander.ParseOptions?} [options] - CLI argument parsing options
-   * @param {commander.ParseOptions['from']} options.from - CLI arguments source
+   * @param {ParseOptions?} [options] - CLI argument parsing options
+   * @param {ParseOptions['from']} options.from - CLI arguments source
    * @return {Promise<this>} CLI program instance
    */
   public override async parseAsync(
     argv: readonly string[] = process.argv,
-    options?: commander.ParseOptions
+    options?: ParseOptions
   ): Promise<this> {
+    // parse command-line arguments
     await super.parseAsync(argv, options)
-    await this.config.done([...argv], this.optsWithGlobals(), this)
+
+    /**
+     * Command that was run.
+     *
+     * @const {Command} command
+     */
+    const command: Command = fallback(this.findCommand(this.args[0]), this)
+
+    // run post-parse callback
+    await this.config.done(command.args, command.optsWithGlobals(), command)
+
     return this
   }
 

@@ -41,6 +41,7 @@ interface Flags
  * @extends {CommandRunner}
  */
 @Command({
+  aliases: ['alpha'],
   arguments: '[strings...]',
   description: 'sort a list alphabetically',
   name: 'alphabetize'

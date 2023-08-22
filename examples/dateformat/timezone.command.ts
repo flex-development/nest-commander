@@ -41,12 +41,12 @@ class TimezoneCommand extends CommandRunner {
    * @public
    * @override
    *
-   * @param {commander.Command} command - Command instance
+   * @param {commander.Command} cmd - Command instance
    * @return {this} `this`
    */
-  public override setCommand(command: commander.Command): this {
-    command.showHelpAfterError()
-    return super.setCommand(command)
+  public override setCommand(cmd: commander.Command): this {
+    cmd.showHelpAfterError()
+    return super.setCommand(cmd)
   }
 }
 
