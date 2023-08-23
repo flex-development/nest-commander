@@ -17,6 +17,7 @@ import type {
 } from '@nestjs/common'
 import type { NestApplicationContextOptions as NestContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
 import { NestFactory } from '@nestjs/core'
+import type { ParseOptions } from './commander'
 import type { CliApplicationContext } from './interfaces'
 import { ProgramOptions } from './models'
 import ProgramModule from './program.module'
@@ -38,7 +39,7 @@ class ProgramFactory {
    * @return {CliApplicationContext} CLI application context
    */
   static #context(app: INestApplicationContext): CliApplicationContext {
-    return define(cast<CliApplicationContext>(app), 'run', {
+    define(app, 'run', {
       /* c8 ignore next 7 */ value: async function run(
         options: { close?: boolean } = {}
       ): Promise<void> {
@@ -47,6 +48,20 @@ class ProgramFactory {
         return void 0
       }
     })
+
+    define(app, 'runWith', {
+      /* c8 ignore next 9 */ value: async function runWith(
+        args: readonly string[] = [],
+        options: Partial<ParseOptions & { close?: boolean }> = {}
+      ): Promise<void> {
+        options.from = fallback(options.from, 'user')
+        await app.get(CommandRunnerService).run(args, cast(options))
+        fallback(options.close, true) && (await app.close())
+        return void args
+      }
+    })
+
+    return cast<CliApplicationContext>(app)
   }
 
   /**

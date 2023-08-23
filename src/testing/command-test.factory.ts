@@ -90,14 +90,14 @@ class CommandTestFactory extends Test {
    * @async
    *
    * @param {TestingModule} app - Command testing module to run
-   * @param {string[]?} [args=[]] - Command arguments
+   * @param {ReadonlyArray<string>?} [args=[]] - Command arguments
    * @param {{ close?: boolean }?} [options={}] - Run options
    * @param {boolean?} [options.close=true] - Close `app` after running
    * @return {Promise<TestingModule>} Command testing module
    */
   public static async run(
     app: TestingModule,
-    args: string[] = [],
+    args: readonly string[] = [],
     options: { close?: boolean } = {}
   ): Promise<TestingModule> {
     await app.init()

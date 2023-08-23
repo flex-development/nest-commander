@@ -3,6 +3,7 @@
  * @module nest-commander/interfaces/CliApplicationContext
  */
 
+import type { ParseOptions } from '#src/commander'
 import type { INestApplicationContext } from '@nestjs/common'
 
 /**
@@ -18,11 +19,26 @@ interface CliApplicationContext extends INestApplicationContext {
    *
    * @async
    *
-   * @param {{ close?: boolean }} [options] - Run options
-   * @param {boolean?} [options.close=true] - Close context after running
+   * @param {{ close?: boolean }} [opts] - Run options
+   * @param {boolean?} [opts.close=true] - Close app after running
    * @return {Promise<void>} Noting when complete
    */
-  run(options?: { close?: boolean }): Promise<void>
+  run(opts?: { close?: boolean }): Promise<void>
+
+  /**
+   * Run the CLI application with specific arguments.
+   *
+   * @async
+   *
+   * @param {ReadonlyArray<string>?} [args] - Command-line arguments
+   * @param {Partial<ParseOptions & { close?: boolean }>?} [opts] - Run options
+   * @param {boolean?} [opts.close=true] - Close app after running
+   * @return {Promise<void>} Noting when complete
+   */
+  runWith(
+    args?: readonly string[],
+    opts?: Partial<ParseOptions & { close?: boolean }>
+  ): Promise<void>
 }
 
 export type { CliApplicationContext as default }
