@@ -9,6 +9,7 @@ import {
   CommandRunner,
   Option
 } from '@flex-development/nest-commander'
+import type * as commander from '@flex-development/nest-commander/commander'
 import {
   SortOrder,
   alphabetize,
@@ -19,7 +20,6 @@ import {
   type Omit,
   type Shake
 } from '@flex-development/tutils'
-import type * as commander from 'commander'
 
 /**
  * Unsupported {@linkcode alphabetize} options.

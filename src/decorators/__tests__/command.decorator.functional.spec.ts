@@ -6,11 +6,11 @@
 import { CommandRunner } from '#src/abstracts'
 import { MetadataKey } from '#src/enums'
 import type { CommandMetadata } from '#src/metadata'
-import type { Constructor } from '@flex-development/tutils'
+import type { Class } from '@flex-development/tutils'
 import TestSubject from '../command.decorator'
 
 describe('functional:decorators/Command', () => {
-  let target: Constructor<CommandRunner>
+  let target: Class<CommandRunner>
 
   beforeAll(() => {
     target = class ChangelogCommand extends CommandRunner {

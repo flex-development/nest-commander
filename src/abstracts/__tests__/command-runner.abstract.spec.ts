@@ -3,7 +3,7 @@
  * @module nest-commander/abstracts/tests/unit/CommandRunner
  */
 
-import { Command } from 'commander'
+import { Command } from '#src/commander'
 import TestSubject from '../command-runner.abstract'
 
 describe('unit:abstracts/CommandRunner', () => {

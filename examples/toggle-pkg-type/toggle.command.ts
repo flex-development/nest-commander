@@ -8,9 +8,9 @@ import {
   CommandRunner,
   Option
 } from '@flex-development/nest-commander'
+import type * as commander from '@flex-development/nest-commander/commander'
 import toggle from '@flex-development/toggle-pkg-type'
 import { DOT, cast } from '@flex-development/tutils'
-import type * as commander from 'commander'
 
 /**
  * Parsed command options.
@@ -37,6 +37,12 @@ interface Flags {
     syntax: '[cmd]'
   },
   description: 'Toggle type fields in package.json files',
+  examples: [
+    '',
+    'on',
+    'off',
+    { prefix: 'npm_package_json=/path/to/directory/or/manifest' }
+  ],
   name: 'toggle-pkg-type',
   root: true
 })

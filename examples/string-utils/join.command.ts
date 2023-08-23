@@ -9,8 +9,8 @@ import {
   CommandRunner,
   Option
 } from '@flex-development/nest-commander'
+import type * as commander from '@flex-development/nest-commander/commander'
 import { join } from '@flex-development/tutils'
-import type * as commander from 'commander'
 
 /**
  * Parsed command options.
@@ -33,6 +33,7 @@ interface Flags {
 @Command({
   arguments: '[strings...]',
   description: 'convert a list of a string',
+  examples: ['hello world --separator=.'],
   name: 'join'
 })
 class JoinCommand extends CommandRunner {

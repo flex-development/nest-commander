@@ -6,7 +6,7 @@
 import type { CommandRunner } from '#src/abstracts'
 import { MetadataKey } from '#src/enums'
 import type { CommandMetadata } from '#src/metadata'
-import type { Constructor } from '@flex-development/tutils'
+import type { Class } from '@flex-development/tutils'
 
 /**
  * Command decorator function.
@@ -18,7 +18,7 @@ import type { Constructor } from '@flex-development/tutils'
  * @param {T} target - Class declaration
  * @return {T} Class declaration
  */
-type CommandDecorator = <T extends Constructor<CommandRunner>>(target: T) => T
+type CommandDecorator = <T extends Class<CommandRunner>>(target: T) => T
 
 /**
  * Specify a command.
@@ -31,7 +31,7 @@ type CommandDecorator = <T extends Constructor<CommandRunner>>(target: T) => T
  * @return {CommandDecorator} Class decorator function
  */
 const Command = (metadata: CommandMetadata): CommandDecorator => {
-  return <T extends Constructor<CommandRunner>>(target: T): T => {
+  return <T extends Class<CommandRunner>>(target: T): T => {
     Reflect.defineMetadata(MetadataKey.COMMAND, metadata, target)
     return target
   }

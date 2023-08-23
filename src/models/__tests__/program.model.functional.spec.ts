@@ -3,10 +3,10 @@
  * @module nest-commander/models/tests/functional/Program
  */
 
+import * as commander from '#src/commander'
 import type { DoneFn, ExitFn } from '#src/types'
 import type { Mock, Spy } from '#tests/interfaces'
 import { get, type EmptyArray } from '@flex-development/tutils'
-import * as commander from 'commander'
 import TestSubject from '../program.model'
 
 describe('functional:models/Program', () => {
@@ -159,33 +159,6 @@ describe('functional:models/Program', () => {
         subject.optsWithGlobals(),
         subject
       )
-    })
-  })
-
-  describe('#version', () => {
-    let spy: Spy<commander.Command['version']>
-    let subject: TestSubject
-
-    beforeAll(() => {
-      subject = new TestSubject()
-    })
-
-    beforeEach(() => {
-      spy = vi.spyOn(commander.Command.prototype, 'version')
-    })
-
-    it('should configure program version', () => {
-      // Arrange
-      const description: string = 'output version number'
-      const flags: string = '-V, --version'
-      const version: string = faker.system.semver()
-
-      // Act
-      subject.version(version + ' '.repeat(2), flags, description)
-
-      // Expect
-      expect(spy).toHaveBeenCalledWith(version, flags, description)
-      expect(subject).to.have.property('_version', version)
     })
   })
 })

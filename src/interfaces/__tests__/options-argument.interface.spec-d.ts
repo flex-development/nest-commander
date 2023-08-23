@@ -3,9 +3,9 @@
  * @module nest-commander/interfaces/tests/unit-d/ArgumentOptions
  */
 
+import type * as commander from '#src/commander'
 import type { ArgumentFallback } from '#src/types'
 import type { Optional } from '@flex-development/tutils'
-import type * as commander from 'commander'
 import type TestSubject from '../options-argument.interface'
 
 describe('unit-d:interfaces/ArgumentOptions', () => {

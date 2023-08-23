@@ -3,9 +3,9 @@
  * @module nest-commander/metadata/OptionMetadata
  */
 
+import type * as commander from '#src/commander'
 import type { OptionFallback } from '#src/types'
 import type { OneOrMany } from '@flex-development/tutils'
-import type * as commander from 'commander'
 
 /**
  * Command option metadata.

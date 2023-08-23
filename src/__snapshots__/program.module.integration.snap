@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`integration:ProgramModule > program with multiple commands > should output help text when requested 1`] = `
+"Description
+  convert a list of a string
+
+Usage
+  $ string-utils join [options] [strings...]
+
+Examples
+  $ string-utils join hello world --separator=.
+
+Options
+  -s, --separator <choice>  list item separator (default: \\",\\")
+  -h, --help                display help for command
+"
+`;
+
+exports[`integration:ProgramModule > program with root command > should output help text when requested 1`] = `
+"Description
+  Toggle type fields in package.json files
+
+Usage
+  $ toggle-pkg-type [options] [cmd]
+
+Examples
+  $ toggle-pkg-type
+  $ toggle-pkg-type on
+  $ toggle-pkg-type off
+  $ npm_package_json=/path/to/directory/or/manifest toggle-pkg-type
+
+Arguments
+  cmd              Toggle command (choices: \\"off\\", \\"on\\")
+
+Options
+  -i, --id <path>  module id of package directory or manifest (default: \\".\\", env: npm_package_json)
+  -h, --help       display help for command
+  -v, --version    print version number
+"
+`;
+
+exports[`integration:ProgramModule > program with subcommands > should output help text when requested 1`] = `
+"Description
+  get proper timezone abbreviation or timezone offset
+
+Usage
+  $ dateformat timezone|tz [options] [date]
+
+Examples
+  $ dateformat timezone
+  $ dateformat tz
+  $ dateformat timezone 2023-08-21T21:45:48.850Z
+  $ dateformat tz 2023-08-23T00:46:32.292Z
+
+Arguments
+  date        date string
+
+Options
+  -h, --help  display help for command
+"
+`;

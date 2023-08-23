@@ -8,9 +8,13 @@ import {
   defaults,
   define,
   fallback,
-  type Constructor
+  type Class
 } from '@flex-development/tutils'
-import type { INestApplicationContext, LogLevel } from '@nestjs/common'
+import type {
+  DynamicModule,
+  INestApplicationContext,
+  LogLevel
+} from '@nestjs/common'
 import type { NestApplicationContextOptions as NestContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
 import { NestFactory } from '@nestjs/core'
 import type { CliApplicationContext } from './interfaces'
@@ -49,6 +53,7 @@ class ProgramFactory {
    * Creates a CLI application context.
    *
    * @see {@linkcode CliApplicationContext}
+   * @see {@linkcode DynamicModule}
    * @see {@linkcode NestContextOptions}
    * @see {@linkcode ProgramOptions}
    *
@@ -56,12 +61,12 @@ class ProgramFactory {
    * @static
    * @async
    *
-   * @param {Constructor<any>} AppModule - Root module
+   * @param {Class<any> | DynamicModule} AppModule - Root module
    * @param {NestContextOptions & ProgramOptions} [options={}] - Context options
    * @return {Promise<CliApplicationContext>} CLI application context
    */
   public static async create(
-    AppModule: Constructor<any>,
+    AppModule: Class<any> | DynamicModule,
     options: NestContextOptions & ProgramOptions = {}
   ): Promise<CliApplicationContext> {
     return this.#context(

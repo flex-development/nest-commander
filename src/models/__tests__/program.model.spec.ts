@@ -3,8 +3,7 @@
  * @module nest-commander/models/tests/unit/Program
  */
 
-import { define } from '@flex-development/tutils'
-import * as commander from 'commander'
+import * as commander from '#src/commander'
 import ProgramOptions from '../options-program.model'
 import TestSubject from '../program.model'
 
@@ -44,24 +43,6 @@ describe('unit:models/Program', () => {
 
       // Act + Expect
       expect(new TestSubject().enforceSettings(command)).to.equal(command)
-    })
-  })
-
-  describe('#version', () => {
-    let version: string
-    let subject: TestSubject
-
-    beforeAll(() => {
-      version = faker.system.semver()
-      subject = define(new TestSubject(), '_version', { value: version })
-    })
-
-    it('should return current version if new version is undefined', () => {
-      expect(subject.version()).to.equal(version)
-    })
-
-    it('should return program instance if version is empty string', () => {
-      for (const v of ['', ' ']) expect(subject.version(v)).to.equal(subject)
     })
   })
 })

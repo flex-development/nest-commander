@@ -6,15 +6,11 @@
 import { CommandRunner } from '#src/abstracts'
 import { MetadataKey } from '#src/enums'
 import type { OptionMetadata } from '#src/metadata'
-import type {
-  Constructor,
-  Fn,
-  PropertyDescriptor
-} from '@flex-development/tutils'
+import type { Class, Fn, PropertyDescriptor } from '@flex-development/tutils'
 import TestSubject from '../option.decorator'
 
 describe('functional:decorators/Option', () => {
-  let target: Constructor<CommandRunner>
+  let target: Class<CommandRunner>
   let value: Fn<[string], number>
 
   beforeAll(() => {

@@ -4,8 +4,9 @@
  */
 
 import type { CommandRunner } from '#src/abstracts'
+import type { Example } from '#src/commander'
 import type { ArgumentOptions } from '#src/interfaces'
-import type { Constructor, OneOrMany, Optional } from '@flex-development/tutils'
+import type { Class, OneOrMany, Optional } from '@flex-development/tutils'
 import type TestSubject from '../command.metadata'
 
 describe('unit-d:metadata/CommandMetadata', () => {
@@ -31,6 +32,12 @@ describe('unit-d:metadata/CommandMetadata', () => {
       .toEqualTypeOf<Optional<string>>()
   })
 
+  it('should match [examples?: (Example["text"] | Partial<Example>)[]]', () => {
+    expectTypeOf<TestSubject>()
+      .toHaveProperty('examples')
+      .toEqualTypeOf<Optional<(Example['text'] | Partial<Example>)[]>>()
+  })
+
   it('should match [hidden?: boolean]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('hidden')
@@ -47,9 +54,9 @@ describe('unit-d:metadata/CommandMetadata', () => {
       .toEqualTypeOf<Optional<boolean>>()
   })
 
-  it('should match [subcommands?: Constructor<CommandRunner>[]]', () => {
+  it('should match [subcommands?: Class<CommandRunner>[]]', () => {
     expectTypeOf<TestSubject>()
       .toHaveProperty('subcommands')
-      .toEqualTypeOf<Optional<Constructor<CommandRunner>[]>>()
+      .toEqualTypeOf<Optional<Class<CommandRunner>[]>>()
   })
 })

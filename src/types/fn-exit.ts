@@ -3,8 +3,8 @@
  * @module nest-commander/types/ExitFn
  */
 
+import type * as commander from '#src/commander'
 import type { Fn } from '@flex-development/tutils'
-import type * as commander from 'commander'
 
 /**
  * Callback used as a replacement for calling {@linkcode process.exit}.

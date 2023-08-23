@@ -4,8 +4,8 @@
  */
 
 import { CommandRunner, Subcommand } from '@flex-development/nest-commander'
+import type * as commander from '@flex-development/nest-commander/commander'
 import { at } from '@flex-development/tutils'
-import type * as commander from 'commander'
 import { formatTimezone } from 'dateformat'
 
 /**
@@ -18,6 +18,12 @@ import { formatTimezone } from 'dateformat'
   aliases: ['tz'],
   arguments: { description: 'date string', syntax: '[date]' },
   description: 'get proper timezone abbreviation or timezone offset',
+  examples: [
+    '',
+    'tz',
+    '2023-08-21T21:45:48.850Z',
+    'tz 2023-08-23T00:46:32.292Z'
+  ],
   name: 'timezone'
 })
 class TimezoneCommand extends CommandRunner {

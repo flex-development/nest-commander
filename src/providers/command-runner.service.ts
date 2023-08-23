@@ -3,6 +3,7 @@
  * @module nest-commander/providers/CommandRunnerService
  */
 
+import { Argument, Command, Option, type ParseOptions } from '#src/commander'
 import { MetadataKey } from '#src/enums'
 import type {
   CommandMetadata,
@@ -28,7 +29,6 @@ import {
 } from '@flex-development/tutils'
 import { DiscoveryService } from '@golevelup/nestjs-discovery'
 import { Injectable, type OnModuleInit } from '@nestjs/common'
-import { Argument, Command, Option, type ParseOptions } from 'commander'
 import HelpService from './help.service'
 
 /**
@@ -165,6 +165,12 @@ class CommandRunnerService implements OnModuleInit {
 
       // add command option
       command.addOption(option)
+    }
+
+    // add command examples
+    for (const example of fallback(metadata.command.examples, [])) {
+      if (isString(example)) command.example(example)
+      else command.example(example.text, example.prefix)
     }
 
     // register command callback

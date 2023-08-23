@@ -10,8 +10,8 @@ import JoinCommand from '#examples/string-utils/join.command'
 import TogglePkgTypeModule from '#examples/toggle-pkg-type/app.module'
 import ToggleCommand from '#examples/toggle-pkg-type/toggle.command'
 import type { CommandRunner } from '#src/abstracts'
+import { CommanderError } from '#src/commander'
 import { Program } from '#src/models'
-import { HelpService } from '#src/providers'
 import { CommandTestFactory } from '#src/testing'
 import type { DoneFn, ErrorFn, ExitFn } from '#src/types'
 import type { Mock } from '#tests/interfaces'
@@ -19,7 +19,6 @@ import * as mlly from '@flex-development/mlly'
 import { DOT, at, fallback, type EmptyArray } from '@flex-development/tutils'
 import type { Type } from '@nestjs/common'
 import { TestingModule } from '@nestjs/testing'
-import { CommanderError } from 'commander'
 
 describe('integration:ProgramModule', () => {
   let exit: Mock<NodeJS.Process['exit']>
@@ -114,13 +113,16 @@ describe('integration:ProgramModule', () => {
 
     it('should output help text when requested', async () => {
       // Arrange
-      const expected: string = cmd.get(HelpService).formatHelp(program)
+      const arg: string = args[0]
 
       // Act
-      await CommandTestFactory.run(cmd, ['--help'])
+      await CommandTestFactory.run(cmd, [
+        ...(arg.startsWith('-') ? [] : [arg]),
+        '--help'
+      ])
 
       // Expect
-      expect(stdout).toHaveBeenCalledWith(expected)
+      expect(at(stdout.mock.lastCall, 0)).toMatchSnapshot()
     })
 
     it('should run specified command', async () => {

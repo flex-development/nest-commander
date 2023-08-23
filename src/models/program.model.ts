@@ -3,20 +3,16 @@
  * @module nest-commander/models/Program
  */
 
+import { Command, type ParseOptions } from '#src/commander'
 import {
   cast,
   fallback,
   get,
   includes,
-  isEmptyString,
-  isUndefined,
   keys,
-  trim,
-  type IfUndefined,
   type Nilable,
   type Optional
 } from '@flex-development/tutils'
-import { Command, type ParseOptions } from 'commander'
 import ProgramOptions from './options-program.model'
 
 /**
@@ -154,41 +150,6 @@ class Program extends Command {
     await this.config.done(command.args, command.optsWithGlobals(), command)
 
     return this
-  }
-
-  /**
-   * Get `this` program version, or modify the existing version configuration.
-   *
-   * Flags `--version` and `-v` are auto-registered if option `flags` are not
-   * specified.
-   *
-   * @public
-   * @override
-   *
-   * @template V - Program version
-   *
-   * @param {V?} [version] - Program version
-   * @param {string?} [flags='-v, --version'] - Option flags
-   * @param {string?} [description='print version number'] - Option description
-   * @return {IfUndefined<V, string, this>} Current program version if `version`
-   * is not passed, or `this` program for chaining
-   */
-  public override version<V extends Optional<string> = undefined>(
-    version?: V,
-    flags?: string,
-    description?: string
-  ): IfUndefined<V, string, this> {
-    return cast(
-      isUndefined(version)
-        ? get(this, '_version')
-        : isEmptyString((version = cast(trim(version))))
-        ? this
-        : super.version(
-            version!,
-            flags || '-v, --version',
-            description || 'print version number'
-          )
-    )
   }
 }
 

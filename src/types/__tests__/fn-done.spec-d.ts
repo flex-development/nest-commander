@@ -3,7 +3,7 @@
  * @module nest-commander/types/tests/unit-d/DoneFn
  */
 
-import type * as commander from 'commander'
+import type * as commander from '#src/commander'
 import type TestSubject from '../fn-done'
 
 describe('unit-d:types/DoneFn', () => {

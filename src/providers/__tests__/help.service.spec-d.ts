@@ -3,7 +3,7 @@
  * @module nest-commander/providers/tests/unit-d/HelpService
  */
 
-import type * as commander from 'commander'
+import type * as commander from '#src/commander'
 import type TestSubject from '../help.service'
 
 describe('unit-d:providers/HelpService', () => {

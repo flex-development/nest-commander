@@ -3,7 +3,7 @@
  * @module nest-commander/types/DoneFn
  */
 
-import type * as commander from 'commander'
+import type * as commander from '#src/commander'
 
 /**
  * Callback ran after command-line arguments are parsed.

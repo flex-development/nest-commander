@@ -28,6 +28,10 @@ component_management:
       name: abstracts
       paths:
         - src/abstracts/*.ts
+    - component_id: commander
+      name: commander
+      paths:
+        - src/commander/*.ts
     - component_id: decorators
       name: decorators
       paths:
@@ -130,6 +134,8 @@ ignore:
 
 profiling:
   critical_files_paths:
+    - src/commander/command.ts
     - src/models/program.model.ts
     - src/program.module.ts
     - src/providers/command-runner.service.ts
+    - src/providers/help.service.ts

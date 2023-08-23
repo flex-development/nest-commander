@@ -3,7 +3,7 @@
  * @module nest-commander/types/tests/unit-d/ExitFn
  */
 
-import type * as commander from 'commander'
+import type * as commander from '#src/commander'
 import type TestSubject from '../fn-exit'
 
 describe('unit-d:types/ExitFn', () => {

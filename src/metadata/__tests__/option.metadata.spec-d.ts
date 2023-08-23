@@ -3,9 +3,9 @@
  * @module nest-commander/metadata/tests/unit-d/OptionMetadata
  */
 
+import type * as commander from '#src/commander'
 import type { OptionFallback } from '#src/types'
 import type { OneOrMany, Optional } from '@flex-development/tutils'
-import type * as commander from 'commander'
 import type TestSubject from '../option.metadata'
 
 describe('unit-d:metadata/OptionMetadata', () => {

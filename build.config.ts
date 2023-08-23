@@ -25,6 +25,7 @@ const config: Config = defineBuildConfig({
       dts: false,
       pattern: [
         '*.ts',
+        'commander/**',
         'decorators/**',
         'models/**',
         'providers/**',

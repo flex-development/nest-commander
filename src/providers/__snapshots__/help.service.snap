@@ -7,6 +7,10 @@ exports[`unit:providers/HelpService > #formatHelp > should return formatted help
 Usage
   $ dateformat [options] [command] [date]
 
+Examples
+  $ dateformat
+  $ dateformat --mask=isoTime
+
 Arguments
   date                date string or timestamp
 
@@ -21,5 +25,26 @@ Options
 Commands
   timezone|tz [date]  get proper timezone abbreviation or timezone offset
   help [command]      display help for command
+"
+`;
+
+exports[`unit:providers/HelpService > #formatHelp > should return formatted help text for subcommand 1`] = `
+"Description
+  get proper timezone abbreviation or timezone offset
+
+Usage
+  $ dateformat timezone|tz [options] [date]
+
+Examples
+  $ dateformat timezone
+  $ dateformat timezone 2023-08-21T21:45:48.850Z
+  $ dateformat tz
+  $ dateformat tz 2023-08-23T00:46:32.292Z
+
+Arguments
+  date        date string
+
+Options
+  -h, --help  display help for command
 "
 `;

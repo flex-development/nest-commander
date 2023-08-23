@@ -35,7 +35,9 @@
       "#src": ["src/index"],
       "#src/*": ["src/*"],
       "#tests/*": ["__tests__/*"],
-      "@flex-development/nest-commander": ["src/index"]
+      "@flex-development/nest-commander": ["src/index"],
+      "@flex-development/nest-commander/commander": ["src/commander/index"],
+      "@flex-development/nest-commander/testing": ["src/testing/index"]
     },
     "preserveConstEnums": true,
     "preserveSymlinks": false,

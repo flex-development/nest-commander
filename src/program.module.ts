@@ -3,9 +3,9 @@
  * @module nest-commander/ProgramModule
  */
 
-import { sift } from '@flex-development/tutils'
+import { sift, type Class } from '@flex-development/tutils'
 import { DiscoveryModule } from '@golevelup/nestjs-discovery'
-import { Module, type DynamicModule, type Type } from '@nestjs/common'
+import { Module, type DynamicModule } from '@nestjs/common'
 import { Program, ProgramOptions } from './models'
 import {
   CliUtilityService,
@@ -27,12 +27,12 @@ class ProgramModule {
    * @static
    *
    * @param {ProgramOptions} options - Program options
-   * @param {(DynamicModule | Type)?} [module] - Module to import
+   * @param {(Class<any> | DynamicModule)?} [module] - Module to import
    * @return {DynamicModule} Global CLI program module
    */
   public static register(
     options: ProgramOptions,
-    module?: DynamicModule | Type
+    module?: Class<any> | DynamicModule
   ): DynamicModule {
     return {
       exports: [CliUtilityService, HelpService, Program],

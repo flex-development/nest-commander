@@ -3,7 +3,9 @@
  * @module nest-commander/providers/HelpService
  */
 
+import { Argument, Command, Help, Option } from '#src/commander'
 import {
+  cast,
   fallback,
   flat,
   fork,
@@ -13,10 +15,10 @@ import {
   select,
   template,
   trim,
-  trimStart
+  trimStart,
+  type Nullable
 } from '@flex-development/tutils'
 import { Injectable } from '@nestjs/common'
-import { Argument, Command, Help, Option } from 'commander'
 
 /**
  * Encapsulates logic for displaying help text.
@@ -56,7 +58,7 @@ class HelpService extends Help {
    */
   constructor() {
     super()
-    this.helpWidth = fallback(process.stdout.columns, 100)
+    this.helpWidth = fallback(process.stdout.columns, 110)
     this.showGlobalOptions = false
     this.sortOptions = true
     this.sortSubcommands = true
@@ -99,6 +101,54 @@ class HelpService extends Help {
   }
 
   /**
+   * Format command examples.
+   *
+   * @public
+   *
+   * @param {Command} cmd - Command instance
+   * @return {string} Formatted command examples
+   */
+  public formatExamples(cmd: Command): string {
+    return this.section(
+      'Examples',
+      cmd.examples.reduce((acc, example) => {
+        /**
+         * Parent command names.
+         *
+         * @const {string[]}
+         */
+        const names: string[] = []
+
+        /**
+         * Current comand parent.
+         *
+         * @var {Nullable<Command>} parent
+         */
+        let parent: Nullable<Command> = cmd.parent
+
+        // get parent command names
+        while (parent) {
+          names.unshift(parent.name())
+          parent = parent.parent
+        }
+
+        return template('{acc}{newline}{wrapped}', {
+          acc,
+          newline: ifelse(acc, '\n', acc),
+          wrapped: this.wrap(
+            template('{indent}$ {example}', {
+              example: trimStart(`${join(names, ' ')} ${example.toString()}`),
+              indent: this.indent()
+            }),
+            this.helpWidth,
+            this.tabsize
+          )
+        })
+      }, '')
+    )
+  }
+
+  /**
    * Format global options.
    *
    * @public
@@ -131,6 +181,7 @@ class HelpService extends Help {
             [
               this.formatDescription(cmd),
               this.formatUsage(cmd),
+              this.formatExamples(cmd),
               this.formatArguments(cmd),
               this.formatOptions(cmd),
               ifelse(this.showGlobalOptions, this.formatGlobalOptions(cmd), ''),
@@ -325,7 +376,7 @@ class HelpService extends Help {
   public override visibleCommands(cmd: Command): Command[] {
     return flat(
       fork(
-        super.visibleCommands(cmd),
+        cast<Command[]>(super.visibleCommands(cmd)),
         subcommand => subcommand.name() !== 'help'
       )
     )

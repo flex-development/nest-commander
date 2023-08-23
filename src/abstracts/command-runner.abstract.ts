@@ -3,7 +3,7 @@
  * @module nest-commander/abstracts/CommandRunner
  */
 
-import type * as commander from 'commander'
+import type * as commander from '#src/commander'
 
 /**
  * Encapsulates command action logic.

@@ -9,8 +9,8 @@ import {
   CommandRunner,
   Option
 } from '@flex-development/nest-commander'
+import type * as commander from '@flex-development/nest-commander/commander'
 import { get, includes, keys } from '@flex-development/tutils'
-import type * as commander from 'commander'
 import dateformat, { masks } from 'dateformat'
 import TimezoneCommand from './timezone.command'
 
@@ -45,6 +45,7 @@ interface Flags {
 @Command({
   arguments: { description: 'date string or timestamp', syntax: '[date]' },
   description: 'https://github.com/felixge/node-dateformat',
+  examples: ['', '--mask=isoTime'],
   name: 'dateformat',
   root: true,
   subcommands: [TimezoneCommand]

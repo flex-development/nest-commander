@@ -6,11 +6,11 @@
 import { CommandRunner } from '#src/abstracts'
 import { MetadataKey } from '#src/enums'
 import type { CommandMetadata } from '#src/metadata'
-import type { Constructor } from '@flex-development/tutils'
+import type { Class } from '@flex-development/tutils'
 import TestSubject from '../subcommand.decorator'
 
 describe('functional:decorators/Subcommand', () => {
-  let target: Constructor<CommandRunner>
+  let target: Class<CommandRunner>
 
   beforeAll(() => {
     target = class TimezoneCommand extends CommandRunner {

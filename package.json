@@ -29,6 +29,7 @@
   ],
   "exports": {
     ".": "./dist/index.mjs",
+    "./commander": "./dist/commander/index.mjs",
     "./package.json": "./package.json",
     "./testing": "./dist/testing/index.mjs"
   },

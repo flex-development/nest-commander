@@ -4,8 +4,9 @@
  */
 
 import type { CommandRunner } from '#src/abstracts'
+import type { Example } from '#src/commander'
 import type { ArgumentOptions } from '#src/interfaces'
-import type { Constructor, OneOrMany } from '@flex-development/tutils'
+import type { Class, OneOrMany } from '@flex-development/tutils'
 
 /**s
  * Command metadata.
@@ -24,6 +25,15 @@ interface CommandMetadata {
    * @see {@linkcode ArgumentOptions}
    */
   arguments?: ArgumentOptions['syntax'] | OneOrMany<ArgumentOptions>
+
+  /**
+   * Command examples.
+   *
+   * @see {@linkcode Example}
+   *
+   * @default []
+   */
+  examples?: (Example['text'] | Partial<Example>)[]
 
   /**
    * Description to display in help text.
@@ -54,7 +64,7 @@ interface CommandMetadata {
   /**
    * Subcommand providers.
    */
-  subcommands?: Constructor<CommandRunner>[]
+  subcommands?: Class<CommandRunner>[]
 }
 
 export type { CommandMetadata as default }

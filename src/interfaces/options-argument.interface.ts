@@ -3,8 +3,8 @@
  * @module nest-commander/interfaces/ArgumentOptions
  */
 
+import type * as commander from '#src/commander'
 import type { ArgumentFallback } from '#src/types'
-import type * as commander from 'commander'
 
 /**
  * Command argument options.

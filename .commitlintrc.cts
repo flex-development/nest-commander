@@ -18,7 +18,7 @@ const config: UserConfig = {
     'scope-enum': [
       RuleConfigSeverity.Error,
       'always',
-      scopes(['abstracts', 'metadata', 'nestjs', 'testing'])
+      scopes(['abstracts', 'commander', 'metadata', 'nestjs', 'testing'])
     ]
   }
 }
