@@ -1,6 +1,6 @@
 /**
- * @file ProgramModule
- * @module nest-commander/ProgramModule
+ * @file CommandRunnerModule
+ * @module nest-commander/CommandRunnerModule
  */
 
 import { sift, type Class } from '@flex-development/tutils'
@@ -14,21 +14,21 @@ import {
 } from './providers'
 
 /**
- * CLI program module.
+ * Command runner module.
  *
  * @class
  */
 @Module({})
-class ProgramModule {
+class CommandRunnerModule {
   /**
-   * Creates a global CLI program module.
+   * Register a global command runner module.
    *
    * @public
    * @static
    *
-   * @param {ProgramOptions} options - Program options
+   * @param {ProgramOptions} options - CLI program options
    * @param {(Class<any> | DynamicModule)?} [module] - Module to import
-   * @return {DynamicModule} Global CLI program module
+   * @return {DynamicModule} Global command runner module
    */
   public static register(
     options: ProgramOptions,
@@ -38,7 +38,7 @@ class ProgramModule {
       exports: [CliUtilityService, HelpService, Program],
       global: true,
       imports: sift([DiscoveryModule, module]),
-      module: ProgramModule,
+      module: CommandRunnerModule,
       providers: [
         {
           provide: ProgramOptions,
@@ -52,11 +52,11 @@ class ProgramModule {
           }
         },
         CliUtilityService,
-        HelpService,
-        CommandRunnerService
+        CommandRunnerService,
+        HelpService
       ]
     }
   }
 }
 
-export default ProgramModule
+export default CommandRunnerModule

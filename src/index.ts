@@ -4,12 +4,12 @@
  */
 
 export * from './abstracts'
+export { default as CommandRunnerModule } from './command-runner.module'
 export * from './decorators'
 export * from './enums'
 export type * from './interfaces'
 export type * from './metadata'
 export * from './models'
 export { default as ProgramFactory } from './program.factory'
-export { default as ProgramModule } from './program.module'
 export * from './providers'
 export type * from './types'

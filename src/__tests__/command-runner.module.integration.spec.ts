@@ -1,6 +1,6 @@
 /**
- * @file Integration Tests - ProgramModule
- * @module nest-commander/tests/integration/ProgramModule
+ * @file Integration Tests - CommandRunnerModule
+ * @module nest-commander/tests/integration/CommandRunnerModule
  */
 
 import DateformatModule from '#examples/dateformat/app.module'
@@ -20,7 +20,7 @@ import { DOT, at, fallback, type EmptyArray } from '@flex-development/tutils'
 import type { Type } from '@nestjs/common'
 import { TestingModule } from '@nestjs/testing'
 
-describe('integration:ProgramModule', () => {
+describe('integration:CommandRunnerModule', () => {
   let exit: Mock<NodeJS.Process['exit']>
   let log: Mock<Console['log']>
   let stderr: Mock<NodeJS.Process['stderr']['write']>

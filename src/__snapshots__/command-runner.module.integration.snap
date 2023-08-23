@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`integration:ProgramModule > program with multiple commands > should output help text when requested 1`] = `
+exports[`integration:CommandRunnerModule > program with multiple commands > should output help text when requested 1`] = `
 "Description
   convert a list of a string
 
@@ -16,7 +16,7 @@ Options
 "
 `;
 
-exports[`integration:ProgramModule > program with root command > should output help text when requested 1`] = `
+exports[`integration:CommandRunnerModule > program with root command > should output help text when requested 1`] = `
 "Description
   Toggle type fields in package.json files
 
@@ -39,7 +39,7 @@ Options
 "
 `;
 
-exports[`integration:ProgramModule > program with subcommands > should output help text when requested 1`] = `
+exports[`integration:CommandRunnerModule > program with subcommands > should output help text when requested 1`] = `
 "Description
   get proper timezone abbreviation or timezone offset
 

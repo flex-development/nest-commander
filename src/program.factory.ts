@@ -17,10 +17,10 @@ import type {
 } from '@nestjs/common'
 import type { NestApplicationContextOptions as NestContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
 import { NestFactory } from '@nestjs/core'
+import CommandRunnerModule from './command-runner.module'
 import type { ParseOptions } from './commander'
 import type { CliApplicationContext } from './interfaces'
 import { ProgramOptions } from './models'
-import ProgramModule from './program.module'
 import { CommandRunnerService } from './providers'
 
 /**
@@ -86,7 +86,7 @@ class ProgramFactory {
   ): Promise<CliApplicationContext> {
     return this.#context(
       await NestFactory.createApplicationContext(
-        ProgramModule.register(new ProgramOptions(options), AppModule),
+        CommandRunnerModule.register(options, AppModule),
         defaults(options, { logger: cast<LogLevel[]>(['error', 'warn']) })
       )
     )

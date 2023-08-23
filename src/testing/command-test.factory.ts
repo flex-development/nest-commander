@@ -3,8 +3,8 @@
  * @module nest-commander/testing/CommandTestFactory
  */
 
+import CommandRunnerModule from '#src/command-runner.module'
 import type { ProgramOptions } from '#src/models'
-import ProgramModule from '#src/program.module'
 import { CommandRunnerService } from '#src/providers'
 import { fallback } from '@flex-development/tutils'
 import type { ModuleMetadata } from '@nestjs/common'
@@ -75,7 +75,7 @@ class CommandTestFactory extends Test {
     return super.createTestingModule({
       controllers,
       exports,
-      imports: [...imports, ProgramModule.register(opts)],
+      imports: [...imports, CommandRunnerModule.register(opts)],
       providers
     })
   }

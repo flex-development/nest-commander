@@ -134,8 +134,8 @@ ignore:
 
 profiling:
   critical_files_paths:
+    - src/command-runner.module.ts
     - src/commander/command.ts
     - src/models/program.model.ts
-    - src/program.module.ts
     - src/providers/command-runner.service.ts
     - src/providers/help.service.ts
