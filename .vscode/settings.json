@@ -12,17 +12,6 @@
     "editor.wordWrapColumn": 100,
     "rewrap.wrappingColumn": 100
   },
-  "[handlebars]": {
-    "editor.defaultFormatter": "Greenbyte.handlebars-preview",
-    "editor.rulers": [
-      {
-        "color": "var(--vscode-editorRuler-foreground)",
-        "column": 100
-      }
-    ],
-    "editor.wordWrapColumn": 100,
-    "rewrap.wrappingColumn": 100
-  },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
@@ -150,7 +139,7 @@
   "editor.guides.indentation": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.overviewRulerBorder": true,
-  "editor.renderFinalNewline": "off",
+  "editor.renderFinalNewline": "on",
   "editor.rulers": [
     {
       // microsoft/vscode#166261
@@ -246,7 +235,7 @@
   "prettier.configPath": ".prettierrc.json",
   "prettier.enable": true,
   "prettier.ignorePath": ".prettierignore",
-  "prettier.prettierPath": "node_modules/prettier",
+  "prettier.prettierPath": "node_modules/prettier/index.cjs",
   "prettier.useEditorConfig": true,
   "rewrap.autoWrap.enabled": true,
   "rewrap.doubleSentenceSpacing": true,

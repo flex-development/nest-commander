@@ -368,7 +368,7 @@ Before deploying, the following steps must be completed:
    - `bump prepatch --preid <dist-tag>`
    - `bump prerelease --preid <dist-tag>`
 4. Update `CHANGELOG.md`
-   - `yarn changelog -sw` (remove `w` to do a dry-run, i.e. `yarn changelog -s`)
+   - `yarn changelog -sw` (remove `-sw` to do a dry-run, i.e. `yarn changelog`)
 5. `yarn release`
 6. Open PR from `release/*` into `main`
    - PR title should match `release: <release-tag>`

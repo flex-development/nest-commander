@@ -13,6 +13,12 @@ const config = {
   overrides: [
     ...require('./.eslintrc.base.cjs').overrides,
     {
+      files: ['grease/providers/changelog.service.ts'],
+      rules: {
+        'promise/prefer-await-to-callbacks': 0
+      }
+    },
+    {
       files: ['src/models/options-program.model.ts'],
       rules: {
         'unicorn/no-process-exit': 0

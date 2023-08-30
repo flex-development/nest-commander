@@ -595,6 +595,7 @@ const config = {
         'no-return-await': 0,
         'no-shadow': 0,
         'no-sparse-arrays': 0,
+        'no-throw-literal': 0,
         'no-unused-expressions': 0,
         'no-unused-vars': 0,
         'no-use-before-define': 0,
@@ -635,7 +636,7 @@ const config = {
         'padding-line-between-statements': 0,
         'prefer-arrow-callback': 0,
         'promise/always-return': 2,
-        'promise/avoid-new': 2,
+        'promise/avoid-new': 0,
         'promise/catch-or-return': [2, { allowFinally: true, allowThen: true }],
         'promise/no-callback-in-promise': 2,
         'promise/no-native': 0,
@@ -645,7 +646,7 @@ const config = {
         'promise/no-return-in-finally': 2,
         'promise/no-return-wrap': [2, { allowReject: false }],
         'promise/param-names': 2,
-        'promise/prefer-await-to-callbacks': 2,
+        'promise/prefer-await-to-callbacks': 1,
         'promise/prefer-await-to-then': 2,
         'promise/valid-params': 2,
         quotes: 0,
@@ -944,6 +945,26 @@ const config = {
         'jsonc/sort-keys': [
           2,
           {
+            order: { caseSensitive: true, type: 'asc' },
+            pathPattern: '^$'
+          }
+        ],
+        'jsonc/valid-json-number': 2,
+        'jsonc/vue-custom-block/no-parsing-error': 2
+      }
+    },
+    {
+      files: ['**/*.+(json5|jsonc)', 'tsconfig*.json'],
+      rules: {
+        'jsonc/no-comments': 0
+      }
+    },
+    {
+      files: ['**/package.json'],
+      rules: {
+        'jsonc/sort-keys': [
+          2,
+          {
             order: [
               'name',
               'description',
@@ -973,20 +994,8 @@ const config = {
               'readme'
             ],
             pathPattern: '^$'
-          },
-          {
-            order: { caseSensitive: true, type: 'asc' },
-            pathPattern: '^$'
           }
-        ],
-        'jsonc/valid-json-number': 2,
-        'jsonc/vue-custom-block/no-parsing-error': 2
-      }
-    },
-    {
-      files: ['**/*.+(json5|jsonc)', 'tsconfig*.json'],
-      rules: {
-        'jsonc/no-comments': 0
+        ]
       }
     },
     {
@@ -1013,6 +1022,7 @@ const config = {
         '@typescript-eslint/no-misused-promises': 0,
         '@typescript-eslint/no-mixed-enums': 0,
         '@typescript-eslint/no-redundant-type-constituents': 0,
+        '@typescript-eslint/no-throw-literal': 0,
         '@typescript-eslint/no-unnecessary-boolean-literal-compare': 0,
         '@typescript-eslint/no-unnecessary-condition': 0,
         '@typescript-eslint/no-unnecessary-qualifier': 0,
@@ -1159,6 +1169,12 @@ const config = {
       files: ['.github/workflows/*.yml', '.yarnrc.yml'],
       rules: {
         'yml/key-name-casing': 0
+      }
+    },
+    {
+      files: ['.vscode/launch.json'],
+      rules: {
+        'jsonc/sort-keys': 0
       }
     }
   ],
