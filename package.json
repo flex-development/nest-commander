@@ -158,7 +158,7 @@
     "semver": "7.5.4",
     "trash-cli": "5.0.0",
     "ts-dedent": "2.2.0",
-    "typescript": "5.2.1-rc",
+    "typescript": "5.2.2",
     "version-bump-prompt": "6.1.0",
     "vite": "4.4.9",
     "vite-tsconfig-paths": "4.2.0",
