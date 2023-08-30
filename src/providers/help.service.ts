@@ -252,36 +252,34 @@ class HelpService extends Help {
      */
     let term: string = ''
 
-    /**
-     * Length of {@linkcode term} including padding.
-     *
-     * @var {number} termwidth
-     */
-    let termwidth: number = this.padWidth(cmd, helper) + this.tabsize
-
     // get argument description and term
     if (item instanceof Argument) {
       description = this.argumentDescription(item)
-      term = this.argumentTerm(item).padEnd(termwidth)
+      term = this.argumentTerm(item)
     }
 
     // get subcommand description and term
     if (item instanceof Command) {
       description = this.subcommandDescription(item)
-      term = this.subcommandTerm(item).padEnd(termwidth)
+      term = this.subcommandTerm(item)
     }
 
     // get option description and term
     if (item instanceof Option) {
       description = this.optionDescription(item)
       term = this.optionTerm(item)
-        .padEnd((termwidth -= ifelse(item.short, 0, this.tabsize * 2)))
-        .padStart(termwidth + ifelse(item.short, 0, this.tabsize * 2))
     }
 
-    return template('{indent}{term}{description}\n', {
-      description: trimStart(description),
-      indent: this.indent(),
+    // pad term
+    term = term.padEnd(this.padWidth(cmd, helper) + this.tabsize)
+    term = term.padStart(term.length + this.tabsize)
+
+    return template('{term}{description}', {
+      description: this.wrap(
+        description,
+        this.helpWidth - term.length,
+        term.length
+      ),
       term
     })
   }
@@ -347,6 +345,19 @@ class HelpService extends Help {
    */
   public indent(size: number = this.tabsize): string {
     return ' '.repeat(size)
+  }
+
+  /**
+   * Get the option term to show in the list of options.
+   *
+   * @public
+   * @override
+   *
+   * @param {Option} option - Command option instance
+   * @return {string} Option term to show in list of options
+   */
+  public override optionTerm(option: Option): string {
+    return option.flags.padStart(option.flags.length + (option.short ? 0 : 4))
   }
 
   /**
