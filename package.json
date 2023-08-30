@@ -182,9 +182,9 @@
   },
   "engines": {
     "node": ">=16.20.0",
-    "yarn": "4.0.0-rc.49"
+    "yarn": "4.0.0-rc.50"
   },
-  "packageManager": "yarn@4.0.0-rc.49",
+  "packageManager": "yarn@4.0.0-rc.50",
   "readme": "README.md",
   "sideEffects": false,
   "tagPrefix": ""
