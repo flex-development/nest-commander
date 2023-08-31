@@ -22,11 +22,13 @@ A NestJS module for building CLI applications
 
 ## What is this?
 
-**TODO**: package overview
+[NestJS][1] is a framework for building [Node.js][2] server-side applications. It can also be used, however, to build
+[standalone applications][3], thus allowing developers to implement the same architectural patterns across applications.
+Built on top of [Commander.js][4], `nest-commander` brings the NestJS developer experience to CLI applications.
 
 ## Install
 
-This package is [ESM only][1].
+This package is [ESM only][5].
 
 ```sh
 yarn add -D @flex-development/nest-commander @nestjs/common @nestjs/core @nestjs/testing
@@ -51,11 +53,15 @@ yarn add -D @flex-development/nest-commander@flex-development/nest-commander @ne
 
 ## Types
 
-This package is fully typed with [TypeScript][2].
+This package is fully typed with [TypeScript][6].
 
 ## Contribute
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-[1]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
-[2]: https://www.typescriptlang.org
+[1]: https://docs.nestjs.com/
+[2]: https://nodejs.org/
+[3]: https://docs.nestjs.com/standalone-applications
+[4]: https://github.com/tj/commander.js
+[5]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+[6]: https://www.typescriptlang.org
