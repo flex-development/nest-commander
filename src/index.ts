@@ -10,6 +10,9 @@ export * from './enums'
 export type * from './interfaces'
 export type * from './metadata'
 export * from './models'
-export { default as ProgramFactory } from './program.factory'
+export {
+  default as ProgramFactory,
+  type ProgramFactoryOptions
+} from './program.factory'
 export * from './providers'
 export type * from './types'

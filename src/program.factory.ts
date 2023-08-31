@@ -15,13 +15,21 @@ import type {
   INestApplicationContext,
   LogLevel
 } from '@nestjs/common'
-import type { NestApplicationContextOptions as NestContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
+import type { NestApplicationContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
 import { NestFactory } from '@nestjs/core'
 import CommandRunnerModule from './command-runner.module'
 import type { ParseOptions } from './commander'
 import type { CliApplicationContext } from './interfaces'
 import { ProgramOptions } from './models'
 import { CommandRunnerService } from './providers'
+
+/**
+ * CLI program factory options.
+ *
+ * @see {@linkcode NestApplicationContextOptions}
+ * @see {@linkcode ProgramOptions}
+ */
+type ProgramFactoryOptions = NestApplicationContextOptions & ProgramOptions
 
 /**
  * CLI program factory.
@@ -71,20 +79,19 @@ class ProgramFactory {
    *
    * @see {@linkcode CliApplicationContext}
    * @see {@linkcode DynamicModule}
-   * @see {@linkcode NestContextOptions}
-   * @see {@linkcode ProgramOptions}
+   * @see {@linkcode ProgramFactoryOptions}
    *
    * @public
    * @static
    * @async
    *
    * @param {Class<any> | DynamicModule} AppModule - Root module
-   * @param {NestContextOptions & ProgramOptions} [options={}] - Context options
+   * @param {ProgramFactoryOptions} [options={}] - Context options
    * @return {Promise<CliApplicationContext>} CLI application context
    */
   public static async create(
     AppModule: Class<any> | DynamicModule,
-    options: NestContextOptions & ProgramOptions = {}
+    options: ProgramFactoryOptions = {}
   ): Promise<CliApplicationContext> {
     return this.context(
       await NestFactory.createApplicationContext(
@@ -95,4 +102,4 @@ class ProgramFactory {
   }
 }
 
-export default ProgramFactory
+export { ProgramFactory as default, type ProgramFactoryOptions }
