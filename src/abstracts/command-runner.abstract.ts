@@ -45,12 +45,12 @@ abstract class CommandRunner {
    * @abstract
    *
    * @param {commander.Command['args']} args - Parsed command arguments
-   * @param {commander.OptionValues} options - Parsed command options
+   * @param {commander.OptionValues} opts - Parsed command options
    * @return {Promise<void> | void} Nothing when complete
    */
   public abstract run(
     args: commander.Command['args'],
-    options: commander.OptionValues
+    opts: commander.OptionValues
   ): Promise<void> | void
 }
 

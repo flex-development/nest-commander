@@ -31,8 +31,7 @@ type Unsupported = 'localeMatcher' | 'locales'
  *
  * @extends {Shake<Required<Omit<AlphabetizeOptions,Unsupported>>>}
  */
-interface Flags
-  extends Shake<Required<Omit<AlphabetizeOptions, Unsupported>>> {}
+interface Opts extends Shake<Required<Omit<AlphabetizeOptions, Unsupported>>> {}
 
 /**
  * Alphabetize command model.
@@ -59,12 +58,12 @@ class AlphabetizeCommand extends CommandRunner {
   /**
    * Parses the `--case-first` flag.
    *
-   * @see {@linkcode Flags.caseFirst}
+   * @see {@linkcode Opts.caseFirst}
    *
    * @protected
    *
    * @param {string} val - Value to parse
-   * @return {Required<Flags>['caseFirst']} Parsed option value
+   * @return {Required<Opts>['caseFirst']} Parsed option value
    */
   @Option({
     choices: ['false', 'lower', 'upper'],
@@ -73,19 +72,19 @@ class AlphabetizeCommand extends CommandRunner {
     fallback: { value: 'upper' },
     flags: '-c, --case-first <choice>'
   })
-  protected parseCaseFirst(val: string): Required<Flags>['caseFirst'] {
+  protected parseCaseFirst(val: string): Required<Opts>['caseFirst'] {
     return cast(val)
   }
 
   /**
    * Parses the `--ignore-punctuation` flag.
    *
-   * @see {@linkcode Flags.ignorePunctuation}
+   * @see {@linkcode Opts.ignorePunctuation}
    *
    * @protected
    *
    * @param {string} val - Value to parse
-   * @return {Required<Flags>['ignorePunctuation']} Parsed option value
+   * @return {Required<Opts>['ignorePunctuation']} Parsed option value
    */
   @Option({
     description: 'ignore punctuation',
@@ -95,19 +94,19 @@ class AlphabetizeCommand extends CommandRunner {
   })
   protected parseIgnorePunctuation(
     val: string
-  ): Required<Flags>['ignorePunctuation'] {
+  ): Required<Opts>['ignorePunctuation'] {
     return this.util.parseBoolean(val)
   }
 
   /**
    * Parses the `--numeric` flag.
    *
-   * @see {@linkcode Flags.numeric}
+   * @see {@linkcode Opts.numeric}
    *
    * @protected
    *
    * @param {string} val - Value to parse
-   * @return {Required<Flags>['sensitivity']} Parsed option value
+   * @return {Required<Opts>['sensitivity']} Parsed option value
    */
   @Option({
     description: 'use numeric collation',
@@ -115,19 +114,19 @@ class AlphabetizeCommand extends CommandRunner {
     flags: '-n, --numeric',
     preset: 'true'
   })
-  protected parseNumeric(val: string): Required<Flags>['numeric'] {
+  protected parseNumeric(val: string): Required<Opts>['numeric'] {
     return this.util.parseBoolean(val)
   }
 
   /**
    * Parses the `--order` flag.
    *
-   * @see {@linkcode Flags.order}
+   * @see {@linkcode Opts.order}
    *
    * @protected
    *
    * @param {string} val - Value to parse
-   * @return {Required<Flags>['order']} Parsed option value
+   * @return {Required<Opts>['order']} Parsed option value
    */
   @Option({
     choices: [SortOrder.ASC.toString(), SortOrder.DESC.toString()],
@@ -135,19 +134,19 @@ class AlphabetizeCommand extends CommandRunner {
     fallback: { value: SortOrder.ASC },
     flags: '-o, --order <order>'
   })
-  protected parseOrder(val: string): Required<Flags>['order'] {
+  protected parseOrder(val: string): Required<Opts>['order'] {
     return cast(this.util.parseInt(val))
   }
 
   /**
    * Parses the `--sensitivity` flag.
    *
-   * @see {@linkcode Flags.sensitivity}
+   * @see {@linkcode Opts.sensitivity}
    *
    * @protected
    *
    * @param {string} val - Value to parse
-   * @return {Required<Flags>['sensitivity']} Parsed option value
+   * @return {Required<Opts>['sensitivity']} Parsed option value
    */
   @Option({
     choices: ['accent', 'base', 'case', 'variant'],
@@ -155,7 +154,7 @@ class AlphabetizeCommand extends CommandRunner {
     fallback: { value: 'variant' },
     flags: '-s, --sensitivity <sensitivity>'
   })
-  protected parseSensitivity(val: string): Required<Flags>['sensitivity'] {
+  protected parseSensitivity(val: string): Required<Opts>['sensitivity'] {
     return cast(val)
   }
 
@@ -164,24 +163,24 @@ class AlphabetizeCommand extends CommandRunner {
    *
    * @public
    *
-   * @param {string[]} args - Command arguments
-   * @param {Flags} flags - Parsed command options
+   * @param {string[]} args - Parsed command arguments
+   * @param {Opts} opts - Parsed command options
    * @return {void} Nothing when complete
    */
-  public run(args: string[], flags: Flags): void {
-    return void console.log(join(alphabetize(args, identity, flags), ' '))
+  public run(args: string[], opts: Opts): void {
+    return void console.log(join(alphabetize(args, identity, opts), ' '))
   }
 
   /**
-   * Set the current command instance.
+   * Set the current command.
    *
    * @see {@linkcode command}
    *
    * @public
    * @override
    *
-   * @param {commander.Command} cmd - Command instance
-   * @return {this} `this`
+   * @param {commander.Command} cmd - New command instance
+   * @return {this} `this` command runner
    */
   public override setCommand(cmd: commander.Command): this {
     cmd.showHelpAfterError()

@@ -30,15 +30,17 @@ import { CommandRunnerService } from './providers'
  */
 class ProgramFactory {
   /**
-   * Creates a CLI application context from a NestJS application context.
+   * Create a CLI application context from a NestJS application context.
    *
-   * @private
+   * @protected
    * @static
    *
    * @param {INestApplicationContext} app - NestJS application context
    * @return {CliApplicationContext} CLI application context
    */
-  static #context(app: INestApplicationContext): CliApplicationContext {
+  protected static context(
+    app: INestApplicationContext
+  ): CliApplicationContext {
     define(app, 'run', {
       /* c8 ignore next 7 */ value: async function run(
         options: { close?: boolean } = {}
@@ -65,7 +67,7 @@ class ProgramFactory {
   }
 
   /**
-   * Creates a CLI application context.
+   * Create a CLI application context.
    *
    * @see {@linkcode CliApplicationContext}
    * @see {@linkcode DynamicModule}
@@ -84,7 +86,7 @@ class ProgramFactory {
     AppModule: Class<any> | DynamicModule,
     options: NestContextOptions & ProgramOptions = {}
   ): Promise<CliApplicationContext> {
-    return this.#context(
+    return this.context(
       await NestFactory.createApplicationContext(
         CommandRunnerModule.register(options, AppModule),
         defaults(options, { logger: cast<LogLevel[]>(['error', 'warn']) })

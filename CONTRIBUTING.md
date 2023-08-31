@@ -63,26 +63,26 @@ Follow the steps below to setup your local development environment:
    # PATH
    # 1. local node_modules
    [ -d $PWD/node_modules/.bin ] && export PATH=$PWD/node_modules/.bin:$PATH
-
+   
    # DOTENV ZSH PLUGIN
    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv
    export ZSH_DOTENV_FILE=.env.zsh
-
+   
    # GIT
    # https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e
    export GIT_EMAIL=$(git config user.email)
    export GIT_NAME=$(git config user.name)
    export GIT_USERNAME=$(git config user.username)
    export GPG_TTY=$(tty)
-
+   
    # HOMEBREW
    # https://brew.sh
    export HOMEBREW_PREFIX=$(brew --prefix)
-
+   
    # NVM
    # https://github.com/nvm-sh/nvm
    export NVM_DIR=$HOME/.nvm
-
+   
    # YARN
    export YARN_RC_FILENAME=.yarnrc.yml
    ```
@@ -95,21 +95,21 @@ Follow the steps below to setup your local development environment:
 
 10. Reload shell
 
-   ```sh
-   exec $SHELL
-   ```
+    ```sh
+    exec $SHELL
+    ```
 
 ### Environment Variables
 
-| name                    |
-| ----------------------- |
-| `CODECOV_TOKEN`         |
-| `GITHUB_TOKEN`          |
-| `HOMEBREW_BREWFILE`     |
-| `NODE_ENV`              |
-| `NODE_NO_WARNINGS`      |
-| `PAT_BOT`               |
-| `ZSH_DOTENV_FILE`       |
+| name                |
+| ------------------- |
+| `CODECOV_TOKEN`     |
+| `GITHUB_TOKEN`      |
+| `HOMEBREW_BREWFILE` |
+| `NODE_ENV`          |
+| `NODE_NO_WARNINGS`  |
+| `PAT_BOT`           |
+| `ZSH_DOTENV_FILE`   |
 
 #### GitHub Actions
 
@@ -263,8 +263,8 @@ To manually upload coverage reports:
 ### Getting Help
 
 If you need help, make note of any issues in their respective files in the form of a [JSDoc comment][12]. If you need
-help with a test, don't forget to use [`it.skip`][15] and/or [`it.todo`][16]. Afterwards, [start a discussion in the
-Q&A category][19].
+help with a test, don't forget to use [`it.skip`][15] and/or [`it.todo`][16]. Afterwards, [start a discussion in the Q&A
+category][19].
 
 ## Labels
 

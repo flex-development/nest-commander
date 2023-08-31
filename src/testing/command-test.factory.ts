@@ -30,7 +30,7 @@ type CommandTestOptions = ModuleMetadata & ProgramOptions
  */
 class CommandTestFactory extends Test {
   /**
-   * Creates and compiles a command testing module.
+   * Create and compile a command testing module.
    *
    * @see {@linkcode CommandTestOptions}
    * @see {@linkcode TestingModule}
@@ -49,7 +49,7 @@ class CommandTestFactory extends Test {
   }
 
   /**
-   * Creates a command testing module builder.
+   * Create a command testing module builder.
    *
    * @see {@linkcode CommandTestOptions}
    * @see {@linkcode TestingModuleBuilder}
@@ -81,7 +81,7 @@ class CommandTestFactory extends Test {
   }
 
   /**
-   * Runs a test command.
+   * Run a test command.
    *
    * @see {@linkcode TestingModule}
    *

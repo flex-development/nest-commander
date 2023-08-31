@@ -27,6 +27,13 @@ interface CommandMetadata {
   arguments?: ArgumentOptions['syntax'] | OneOrMany<ArgumentOptions>
 
   /**
+   * Description to display in help text.
+   *
+   * @default ''
+   */
+  description?: string
+
+  /**
    * Command examples.
    *
    * @see {@linkcode Example}
@@ -34,13 +41,6 @@ interface CommandMetadata {
    * @default []
    */
   examples?: (Example['text'] | Partial<Example>)[]
-
-  /**
-   * Description to display in help text.
-   *
-   * @default ''
-   */
-  description?: string
 
   /**
    * Remove command from help text.

@@ -17,7 +17,7 @@ A NestJS module for building CLI applications
 - [What is this?](#what-is-this)
 - [Install](#install)
 - [Use](#use)
-- [API](#api)
+- [Types](#types)
 - [Contribute](#contribute)
 
 ## What is this?
@@ -29,18 +29,18 @@ A NestJS module for building CLI applications
 This package is [ESM only][1].
 
 ```sh
-yarn add @flex-development/nest-commander
+yarn add -D @flex-development/nest-commander @nestjs/common @nestjs/core @nestjs/testing
 ```
 
 From Git:
 
 ```sh
-yarn add @flex-development/nest-commander@flex-development/nest-commander
+yarn add -D @flex-development/nest-commander@flex-development/nest-commander @nestjs/common @nestjs/core @nestjs/testing
 ```
 
 <blockquote>
   <small>
-    See <a href='https://yarnpkg.com/features/protocols#git'>Git - Protocols | Yarn</a>
+    See <a href='https://yarnpkg.com/protocol/git'>Git Protocol | Yarn</a>
     &nbsp;for details on requesting a specific branch, commit, or tag.
   </small>
 </blockquote>
@@ -48,10 +48,6 @@ yarn add @flex-development/nest-commander@flex-development/nest-commander
 ## Use
 
 **TODO**: usage docs
-
-## API
-
-**TODO**: api docs
 
 ## Types
 

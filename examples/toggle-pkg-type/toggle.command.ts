@@ -15,7 +15,7 @@ import { DOT, cast } from '@flex-development/tutils'
 /**
  * Parsed command options.
  */
-interface Flags {
+interface Opts {
   /**
    * Path to package directory or manifest.
    *
@@ -50,7 +50,7 @@ class ToggleCommand extends CommandRunner {
   /**
    * Parses the `--id` flag.
    *
-   * @see {@linkcode Flags.id}
+   * @see {@linkcode Opts.id}
    *
    * @protected
    *
@@ -74,29 +74,29 @@ class ToggleCommand extends CommandRunner {
    *
    * [1]: https://nodejs.org/api/packages.html#type
    *
-   * @see {@linkcode Flags}
+   * @see {@linkcode Opts}
    * @see {@linkcode toggle}
    *
    * @public
    *
-   * @param {[string?, ...string[]]} args - Command arguments
-   * @param {Flags} flags - Command options
+   * @param {[string?, ...string[]]} args - Parsed command arguments
+   * @param {Opts} opts - Parsed command options
    * @return {void} Nothing when complete
    */
-  public run(args: [string?, ...string[]], flags: Flags): void {
-    return void toggle(cast(args[0]), flags.id)
+  public run(args: [string?, ...string[]], opts: Opts): void {
+    return void toggle(cast(args[0]), opts.id)
   }
 
   /**
-   * Set the current command instance.
+   * Set the current command.
    *
    * @see {@linkcode command}
    *
    * @public
    * @override
    *
-   * @param {commander.Command} cmd - Command instance
-   * @return {this} `this`
+   * @param {commander.Command} cmd - New command instance
+   * @return {this} `this` command runner
    */
   public override setCommand(cmd: commander.Command): this {
     cmd.showHelpAfterError()

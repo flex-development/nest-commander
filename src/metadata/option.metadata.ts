@@ -63,7 +63,7 @@ interface OptionMetadata {
   /**
    * Implied option values.
    *
-   * **Note**: Custom parsing is not applicable to implied values.
+   * **Note**: Custom parsing is not applied to implied values.
    *
    * @see {@linkcode commander.OptionValues}
    *

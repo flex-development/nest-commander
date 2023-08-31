@@ -3,11 +3,17 @@
   "description": "A NestJS module for building CLI applications",
   "version": "0.0.0",
   "keywords": [
+    "args",
+    "argv",
     "cli",
+    "command",
+    "command-line",
     "commander",
+    "decorator",
     "nest",
     "nestjs",
     "nestjs-module",
+    "program",
     "typescript"
   ],
   "license": "BSD-3-Clause",

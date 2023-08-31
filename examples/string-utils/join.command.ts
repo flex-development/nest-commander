@@ -15,7 +15,7 @@ import { join } from '@flex-development/tutils'
 /**
  * Parsed command options.
  */
-interface Flags {
+interface Opts {
   /**
    * List item separator.
    *
@@ -49,19 +49,19 @@ class JoinCommand extends CommandRunner {
   /**
    * Parses the `--separator` flag.
    *
-   * @see {@linkcode Flags.separator}
+   * @see {@linkcode Opts.separator}
    *
    * @protected
    *
    * @param {string} val - Value to parse
-   * @return {Flags['separator']} Parsed option value
+   * @return {Opts['separator']} Parsed option value
    */
   @Option({
     description: 'list item separator',
     fallback: { value: ',' },
     flags: '-s, --separator <choice>'
   })
-  protected parseSeparator(val: string): Flags['separator'] {
+  protected parseSeparator(val: string): Opts['separator'] {
     return val
   }
 
@@ -70,24 +70,24 @@ class JoinCommand extends CommandRunner {
    *
    * @public
    *
-   * @param {string[]} args - Command arguments
-   * @param {Flags} flags - Parsed command options
+   * @param {string[]} args - Parsed command arguments
+   * @param {Opts} opts - Parsed command options
    * @return {void} Nothing when complete
    */
-  public run(args: string[], flags: Flags): void {
-    return void console.log(join(args, flags.separator))
+  public run(args: string[], opts: Opts): void {
+    return void console.log(join(args, opts.separator))
   }
 
   /**
-   * Set the current command instance.
+   * Set the current command.
    *
    * @see {@linkcode command}
    *
    * @public
    * @override
    *
-   * @param {commander.Command} cmd - Command instance
-   * @return {this} `this`
+   * @param {commander.Command} cmd - New command instance
+   * @return {this} `this` command runner
    */
   public override setCommand(cmd: commander.Command): this {
     cmd.showHelpAfterError()

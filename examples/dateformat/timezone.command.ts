@@ -32,7 +32,7 @@ class TimezoneCommand extends CommandRunner {
    *
    * @public
    *
-   * @param {[string?, ...string[]]} args - Command arguments
+   * @param {[string?, ...string[]]} args - Parsed command arguments
    * @return {void} Nothing when complete
    */
   public run(args: [string?, ...string[]]): void {
@@ -40,15 +40,15 @@ class TimezoneCommand extends CommandRunner {
   }
 
   /**
-   * Set the current command instance.
+   * Set the current command.
    *
    * @see {@linkcode command}
    *
    * @public
    * @override
    *
-   * @param {commander.Command} cmd - Command instance
-   * @return {this} `this`
+   * @param {commander.Command} cmd - New command instance
+   * @return {this} `this` command runner
    */
   public override setCommand(cmd: commander.Command): this {
     cmd.showHelpAfterError()

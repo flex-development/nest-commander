@@ -17,7 +17,7 @@ import TimezoneCommand from './timezone.command'
 /**
  * Parsed command options.
  */
-interface Flags {
+interface Opts {
   /**
    * Convert local time to GMT time.
    */
@@ -63,7 +63,7 @@ class DateCommand extends CommandRunner {
   /**
    * Parses the `--gmt` flag.
    *
-   * @see {@linkcode Flags.gmt}
+   * @see {@linkcode Opts.gmt}
    *
    * @protected
    *
@@ -84,7 +84,7 @@ class DateCommand extends CommandRunner {
   /**
    * Parses the `--mask` flag.
    *
-   * @see {@linkcode Flags.mask}
+   * @see {@linkcode Opts.mask}
    *
    * @protected
    *
@@ -103,7 +103,7 @@ class DateCommand extends CommandRunner {
   /**
    * Parses the `--utc` flag.
    *
-   * @see {@linkcode Flags.utc}
+   * @see {@linkcode Opts.utc}
    *
    * @protected
    *
@@ -126,26 +126,24 @@ class DateCommand extends CommandRunner {
    *
    * @public
    *
-   * @param {[string?, ...string[]]} args - Command arguments
-   * @param {Flags} flags - Parsed command options
+   * @param {[string?, ...string[]]} args - Parsed command arguments
+   * @param {Opts} opts - Parsed command options
    * @return {void} Nothing when complete
    */
-  public run(args: [string?, ...string[]], flags: Flags): void {
-    return void console.log(
-      dateformat(args[0], flags.mask, flags.utc, flags.gmt)
-    )
+  public run(args: [string?, ...string[]], opts: Opts): void {
+    return void console.log(dateformat(args[0], opts.mask, opts.utc, opts.gmt))
   }
 
   /**
-   * Set the current command instance.
+   * Set the current command.
    *
    * @see {@linkcode command}
    *
    * @public
    * @override
    *
-   * @param {commander.Command} cmd - Command instance
-   * @return {this} `this`
+   * @param {commander.Command} cmd - New command instance
+   * @return {this} `this` command runner
    */
   public override setCommand(cmd: commander.Command): this {
     cmd.showHelpAfterError()

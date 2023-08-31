@@ -187,8 +187,11 @@ repository:
   squash_merge_commit_title: PR_TITLE
   topics:
     - cli
+    - cli-program
+    - command-line
     - commander
     - nest
+    - nestjs
     - nestjs-module
     - typescript
   visibility: public
