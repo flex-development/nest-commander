@@ -1,7 +1,7 @@
 {
   "name": "@flex-development/nest-commander",
   "description": "A NestJS module for building CLI applications",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.1",
   "keywords": [
     "args",
     "argv",
