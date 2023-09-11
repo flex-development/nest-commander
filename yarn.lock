@@ -1513,8 +1513,8 @@ __metadata:
     chai: "npm:5.0.0-alpha.1"
     chai-each: "npm:0.0.1"
     commander: "npm:11.0.0"
-    conventional-changelog-conventionalcommits: "npm:7.0.1"
-    conventional-recommended-bump: "npm:8.0.0"
+    conventional-changelog-conventionalcommits: "npm:7.0.2"
+    conventional-recommended-bump: "npm:9.0.0"
     cross-env: "npm:7.0.3"
     cspell: "npm:7.3.2"
     dateformat: "npm:5.0.3"
@@ -3531,13 +3531,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"buffer-from@npm:^1.0.0":
-  version: 1.1.2
-  resolution: "buffer-from@npm:1.1.2"
-  checksum: 0448524a562b37d4d7ed9efd91685a5b77a50672c556ea254ac9a6d30e3403a517d8981f10e565db24e8339413b43c97ca2951f10e399c6125a0d8911f5679bb
-  languageName: node
-  linkType: hard
-
 "buffer@npm:^5.7.0":
   version: 5.7.1
   resolution: "buffer@npm:5.7.1"
@@ -4001,18 +3994,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concat-stream@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "concat-stream@npm:2.0.0"
-  dependencies:
-    buffer-from: "npm:^1.0.0"
-    inherits: "npm:^2.0.3"
-    readable-stream: "npm:^3.0.2"
-    typedarray: "npm:^0.0.6"
-  checksum: 250e576d0617e7c58e1c4b2dd6fe69560f316d2c962a409f9f3aac794018499ddb31948b1e4296f217008e124cd5d526432097745157fe504b5d9f3dc469eadb
-  languageName: node
-  linkType: hard
-
 "configstore@npm:^6.0.0":
   version: 6.0.0
   resolution: "configstore@npm:6.0.0"
@@ -4067,19 +4048,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-conventionalcommits@npm:7.0.1":
-  version: 7.0.1
-  resolution: "conventional-changelog-conventionalcommits@npm:7.0.1"
+"conventional-changelog-conventionalcommits@npm:7.0.2":
+  version: 7.0.2
+  resolution: "conventional-changelog-conventionalcommits@npm:7.0.2"
   dependencies:
     compare-func: "npm:^2.0.0"
-  checksum: d5e927ef53ca9919fdb47d9eba2521cf0c333e33abd00b810d3abc4e1d0b32e65c2fa051289f840da308806378d70a60f4a2871b178770e21df0d88530389ee4
+  checksum: 3cc6586ac57cc54c0595b28ae22e8b674c970034bad35e467f71aba395278a6ef43351cfbf782a5fc33eb13ed4ad843a145b89ad1444f5fa571e3bf9c1d5519b
   languageName: node
   linkType: hard
 
-"conventional-changelog-preset-loader@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "conventional-changelog-preset-loader@npm:4.0.0"
-  checksum: 1f8859c0b8ccac8858af2913f4dd7c9b8412af98648a0de61b4449d4a331075b892653c649aa0ed82d2d72b6731c882b5627bd423525349bdff645c04b15d5f6
+"conventional-changelog-preset-loader@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "conventional-changelog-preset-loader@npm:4.1.0"
+  checksum: 8813c34884a9e3f4be9f3a9ffa216012ee40ef8c0eb1593a70fa8ab906e08de09cab9e0b769b187a43456dbcb24b01a517b3798ebc5b8b9264af2e32c976d9c9
   languageName: node
   linkType: hard
 
@@ -4118,20 +4099,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-recommended-bump@npm:8.0.0":
-  version: 8.0.0
-  resolution: "conventional-recommended-bump@npm:8.0.0"
+"conventional-recommended-bump@npm:9.0.0":
+  version: 9.0.0
+  resolution: "conventional-recommended-bump@npm:9.0.0"
   dependencies:
-    concat-stream: "npm:^2.0.0"
-    conventional-changelog-preset-loader: "npm:^4.0.0"
+    conventional-changelog-preset-loader: "npm:^4.1.0"
     conventional-commits-filter: "npm:^4.0.0"
     conventional-commits-parser: "npm:^5.0.0"
     git-raw-commits: "npm:^4.0.0"
-    git-semver-tags: "npm:^6.0.0"
+    git-semver-tags: "npm:^7.0.0"
     meow: "npm:^12.0.1"
   bin:
     conventional-recommended-bump: cli.mjs
-  checksum: 4fa823aa5787253c7d34d279c51b8182c71e7abd540ae41d22eeefd0bca3e6bd423daf35b5cf68af4aff0b37af2fe0c952619dd6dd44a59307ddef99f55d3f8e
+  checksum: a24350a2e1633bf22da884933bd0fffe750547fa9df51d8d3aeaacf5d0447f12d9bc8bf994294b945c6c79beecdfc491f47b5e07d20ebacc663c48c057344b71
   languageName: node
   linkType: hard
 
@@ -5808,15 +5788,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"git-semver-tags@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "git-semver-tags@npm:6.0.0"
+"git-semver-tags@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "git-semver-tags@npm:7.0.1"
   dependencies:
     meow: "npm:^12.0.1"
     semver: "npm:^7.5.2"
   bin:
     git-semver-tags: cli.mjs
-  checksum: 8e4b1786c66861ff23830878f43e2aec0528f039fc809755985d753c21bd8b48a9a9845892e1e5561fa5b7caf1243516a87d6f3a5be134735ef62892fe9d4d1a
+  checksum: 07b8a352bd28ad7678a2e12c91b11b5e53aff017420497bbb1cba0645e609f58d0a7d02d5f2ea6c7cd3019d7631ce7737f64cc90c47d944753c6bd2a36c03211
   languageName: node
   linkType: hard
 
@@ -8480,7 +8460,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:3, readable-stream@npm:^3.0.0, readable-stream@npm:^3.0.2, readable-stream@npm:^3.6.0":
+"readable-stream@npm:3, readable-stream@npm:^3.0.0, readable-stream@npm:^3.6.0":
   version: 3.6.2
   resolution: "readable-stream@npm:3.6.2"
   dependencies:
@@ -9655,13 +9635,6 @@ __metadata:
   dependencies:
     is-typedarray: "npm:^1.0.0"
   checksum: 7c850c3433fbdf4d04f04edfc751743b8f577828b8e1eb93b95a3bce782d156e267d83e20fb32b3b47813e69a69ab5e9b5342653332f7d21c7d1210661a7a72c
-  languageName: node
-  linkType: hard
-
-"typedarray@npm:^0.0.6":
-  version: 0.0.6
-  resolution: "typedarray@npm:0.0.6"
-  checksum: 2cc1bcf7d8c1237f6a16c04efc06637b2c5f2d74e58e84665445cf87668b85a21ab18dd751fa49eee6ae024b70326635d7b79ad37b1c370ed2fec6aeeeb52714
   languageName: node
   linkType: hard
 
