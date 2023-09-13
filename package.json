@@ -157,7 +157,7 @@
     "pkg-size": "2.4.0",
     "prettier": "3.0.3",
     "prettier-plugin-sh": "0.13.1",
-    "pretty-format": "29.6.3",
+    "pretty-format": "29.7.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "8.0.0-alpha.12",
     "semver": "7.5.4",
