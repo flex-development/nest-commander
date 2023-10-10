@@ -1536,7 +1536,7 @@ __metadata:
     eslint-plugin-unicorn: "npm:48.0.1"
     eslint-plugin-yml: "npm:1.9.0"
     graphql: "npm:16.8.1"
-    graphql-config: "npm:5.0.2"
+    graphql-config: "npm:5.0.3"
     growl: "npm:1.10.5"
     husky: "npm:8.0.3"
     is-ci: "npm:3.0.1"
@@ -5958,9 +5958,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-config@npm:5.0.2":
-  version: 5.0.2
-  resolution: "graphql-config@npm:5.0.2"
+"graphql-config@npm:5.0.3":
+  version: 5.0.3
+  resolution: "graphql-config@npm:5.0.3"
   dependencies:
     "@graphql-tools/graphql-file-loader": "npm:^8.0.0"
     "@graphql-tools/json-file-loader": "npm:^8.0.0"
@@ -5979,7 +5979,7 @@ __metadata:
   peerDependenciesMeta:
     cosmiconfig-toml-loader:
       optional: true
-  checksum: 668f177e8c36e482b246ec84e10e0e9d7f29e51b519828d22866c724500cf2cc075a07e4d5d5f057df9eaa189550d485072d3814b15ff0b383367e0fa92f8bbf
+  checksum: be7667ea260c7db3e8b02c0d73d2a2bc214683d91886f883c73465e07aa204f9ae6bff494eaa253def31abd2bbe59e78c6b418ed456e06d2274050dbc45e33e7
   languageName: node
   linkType: hard
 
