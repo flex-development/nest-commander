@@ -28,17 +28,23 @@ updates:
       include: scope
     directory: /
     groups:
-      conventional-changelog:
+      commitlint:
         patterns:
-          - '@types/conventional-recommended-bump'
-          - conventional-changelog-conventionalcommits
-          - conventional-recommended-bump
+          - '@commitlint/*'
+      dependencies:
+        dependency-type: production
+      eslint:
+        patterns:
+          - '@types/eslint'
+          - eslint
       flex-development:
+        dependency-type: development
         patterns:
           - '@flex-development/*'
       nestjs:
         patterns:
           - '@nestjs/*'
+          - rxjs
       typescript-eslint:
         patterns:
           - '@typescript-eslint/*'
