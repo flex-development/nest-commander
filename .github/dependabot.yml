@@ -8,7 +8,7 @@
 version: 2
 registries:
   github:
-    token: ${{ secrets.PAT_BOT }}
+    token: ${{ secrets.GH_REGISTRY_TOKEN }}
     type: npm-registry
     url: https://npm.pkg.github.com
 updates:
@@ -20,9 +20,6 @@ updates:
     labels:
       - scope:dependencies
       - type:ci
-    reviewers:
-      - flex-development/dependabot-review
-      - flexdevelopment
     schedule:
       interval: daily
   - package-ecosystem: npm
@@ -54,8 +51,5 @@ updates:
       - type:build
     registries:
       - github
-    reviewers:
-      - flex-development/dependabot-review
-      - flexdevelopment
     schedule:
       interval: daily
