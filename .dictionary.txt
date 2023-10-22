@@ -9,6 +9,7 @@ commitlintrc
 dedupe
 dessant
 dohm
+dprint
 emojify
 fbca
 ggshield
@@ -31,6 +32,7 @@ nvmrc
 pathe
 pkgs
 preid
+shfmt
 tscu
 unstub
 vates

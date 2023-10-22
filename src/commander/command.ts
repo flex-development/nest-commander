@@ -153,13 +153,13 @@ class Command extends CommandBase {
     return cast(
       isUndefined(version)
         ? get(this, '_version')
-        : isEmptyString((version = cast(trim(version))))
+        : isEmptyString(version = cast(trim(version)))
         ? this
         : super.version(
-            version!,
-            fallback(flags, '-v, --version', isFalsy),
-            fallback(description, 'print version number', isFalsy)
-          )
+          version!,
+          fallback(flags, '-v, --version', isFalsy),
+          fallback(description, 'print version number', isFalsy)
+        )
     )
   }
 }

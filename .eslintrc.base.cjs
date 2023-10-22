@@ -31,7 +31,7 @@ const config = {
     [require('./tsconfig.build.json').compilerOptions.target]: true,
     node: true
   },
-  extends: ['plugin:prettier/recommended'],
+  extends: [],
   overrides: [
     {
       extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
@@ -56,7 +56,6 @@ const config = {
         'import',
         'jsdoc',
         'node',
-        'prettier',
         'promise',
         'unicorn'
       ],
@@ -90,13 +89,7 @@ const config = {
         '@typescript-eslint/camelcase': 0,
         '@typescript-eslint/class-literal-property-style': [2, 'getters'],
         '@typescript-eslint/consistent-indexed-object-style': [2, 'record'],
-        '@typescript-eslint/consistent-type-assertions': [
-          2,
-          {
-            assertionStyle: 'as',
-            objectLiteralTypeAssertions: 'allow'
-          }
-        ],
+        '@typescript-eslint/consistent-type-assertions': 0,
         '@typescript-eslint/consistent-type-definitions': 0,
         '@typescript-eslint/consistent-type-exports': [
           2,
@@ -142,13 +135,16 @@ const config = {
               memberTypes: [
                 'static-field',
                 'instance-field',
-                'constructor',
                 'signature',
+                'call-signature',
+                'public-constructor',
+                'protected-constructor',
+                'private-constructor',
+                'static-initialization',
                 'static-get',
                 'static-set',
                 'static-method',
-                'instance-get',
-                'instance-set',
+                ['instance-get', 'instance-set'],
                 'instance-method'
               ],
               order: 'alphabetically'
@@ -160,7 +156,13 @@ const config = {
         '@typescript-eslint/no-base-to-string': [
           2,
           {
-            ignoredTypeNames: ['Error', 'RegExp', 'URL', 'URLSearchParams']
+            ignoredTypeNames: [
+              'Error',
+              'RegExp',
+              'SemVer',
+              'URL',
+              'URLSearchParams'
+            ]
           }
         ],
         '@typescript-eslint/no-confusing-non-null-assertion': 0,
@@ -685,21 +687,13 @@ const config = {
           }
         ],
         'unicorn/import-index': 2,
-        'unicorn/import-style': [
-          2,
-          {
-            styles: {
-              chalk: { default: true },
-              shelljs: { default: true }
-            }
-          }
-        ],
+        'unicorn/import-style': [2, { styles: {} }],
         'unicorn/new-for-builtins': 2,
         'unicorn/no-abusive-eslint-disable': 2,
         'unicorn/no-array-callback-reference': 0,
         'unicorn/no-array-for-each': 2,
         'unicorn/no-array-method-this-argument': 2,
-        'unicorn/no-array-push-push': 2,
+        'unicorn/no-array-push-push': 0,
         'unicorn/no-array-reduce': 0,
         'unicorn/no-await-expression-member': 0,
         'unicorn/no-console-spaces': 2,
@@ -732,7 +726,7 @@ const config = {
         'unicorn/no-useless-length-check': 2,
         'unicorn/no-useless-promise-resolve-reject': 2,
         'unicorn/no-useless-spread': 2,
-        'unicorn/no-useless-undefined': 2,
+        'unicorn/no-useless-undefined': 0,
         'unicorn/no-zero-fractions': 2,
         'unicorn/number-literal-case': 0,
         // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2003
@@ -804,6 +798,7 @@ const config = {
         'jsdoc/no-undefined-types': 0,
         'jsdoc/require-file-overview': 0,
         'no-var': 0,
+        'unicorn/filename-case': 0,
         'unicorn/no-keyword-prefix': 0
       }
     },
@@ -847,6 +842,7 @@ const config = {
         '@typescript-eslint/consistent-indexed-object-style': 0,
         '@typescript-eslint/no-base-to-string': 0,
         '@typescript-eslint/no-empty-function': 0,
+        '@typescript-eslint/no-invalid-void-type': 0,
         '@typescript-eslint/no-unused-expressions': 0,
         '@typescript-eslint/prefer-as-const': 0,
         '@typescript-eslint/prefer-ts-expect-error': 0,
@@ -864,6 +860,7 @@ const config = {
         'jest-formatting/padding-around-describe-blocks': 1,
         'jest-formatting/padding-around-expect-groups': 1,
         'jest-formatting/padding-around-test-blocks': 1,
+        'no-empty-pattern': 0,
         'promise/prefer-await-to-callbacks': 0,
         'promise/valid-params': 0,
         'unicorn/consistent-destructuring': 0,
@@ -888,6 +885,12 @@ const config = {
       }
     },
     {
+      files: '**/*.abstract.ts',
+      rules: {
+        '@typescript-eslint/no-useless-constructor': 0
+      }
+    },
+    {
       files: ['**/decorators/*.constraint.ts', '**/*.decorator.ts'],
       rules: {
         '@typescript-eslint/ban-types': 0,
@@ -902,11 +905,9 @@ const config = {
       }
     },
     {
-      extends: ['plugin:@graphql-eslint/operations-all'],
-      files: '**/*.gql',
+      files: '**/*.+(cjs|js|mjs)',
       rules: {
-        '@graphql-eslint/no-anonymous-operations': 0,
-        '@graphql-eslint/require-id-when-available': 0
+        '@typescript-eslint/explicit-member-accessibility': 0
       }
     },
     {
@@ -1063,7 +1064,7 @@ const config = {
       parser: 'yaml-eslint-parser',
       plugins: ['yml'],
       rules: {
-        'prettier/prettier': 0,
+        'spaced-comment': 0,
         'yml/block-mapping': 2,
         'yml/block-mapping-question-indicator-newline': [2, 'never'],
         'yml/block-sequence': 2,
@@ -1159,14 +1160,15 @@ const config = {
       files: [
         '.github/dependabot.yml',
         '.github/workflows/*.yml',
-        'action.yml'
+        'action.yml',
+        'docker*.yml'
       ],
       rules: {
         'yml/sort-keys': 0
       }
     },
     {
-      files: ['.github/workflows/*.yml', '.yarnrc.yml'],
+      files: ['.github/workflows/*.yml', '.yarnrc.yml', 'docker*.yml'],
       rules: {
         'yml/key-name-casing': 0
       }
@@ -1178,11 +1180,9 @@ const config = {
       }
     }
   ],
-  plugins: ['prettier'],
+  plugins: [],
   reportUnusedDisableDirectives: true,
-  rules: {
-    'prettier/prettier': [2, {}, { usePrettierrc: true }]
-  },
+  rules: {},
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.cts', '.mts', '.ts', '.tsx']
@@ -1223,6 +1223,9 @@ const config = {
         extends: {
           name: 'namepath-defining',
           required: ['type']
+        },
+        fires: {
+          required: ['name']
         },
         implements: {
           name: 'namepath-defining',

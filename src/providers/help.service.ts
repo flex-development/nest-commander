@@ -325,14 +325,16 @@ class HelpService extends Help {
    * @return {string} Formatted command usage
    */
   public formatUsage(cmd: Command): string {
-    return `Usage\n${this.wrap(
-      template('{indent}$ {usage}', {
-        indent: this.indent(),
-        usage: this.commandUsage(cmd)
-      }),
-      this.helpWidth,
-      this.tabsize
-    )}`
+    return template('Usage\n{text}', {
+      text: this.wrap(
+        template('{indent}$ {usage}', {
+          indent: this.indent(),
+          usage: this.commandUsage(cmd)
+        }),
+        this.helpWidth,
+        this.tabsize
+      )
+    })
   }
 
   /**

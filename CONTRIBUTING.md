@@ -63,26 +63,26 @@ Follow the steps below to setup your local development environment:
    # PATH
    # 1. local node_modules
    [ -d $PWD/node_modules/.bin ] && export PATH=$PWD/node_modules/.bin:$PATH
-   
+
    # DOTENV ZSH PLUGIN
    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv
    export ZSH_DOTENV_FILE=.env.zsh
-   
+
    # GIT
    # https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e
    export GIT_EMAIL=$(git config user.email)
    export GIT_NAME=$(git config user.name)
    export GIT_USERNAME=$(git config user.username)
    export GPG_TTY=$(tty)
-   
+
    # HOMEBREW
    # https://brew.sh
    export HOMEBREW_PREFIX=$(brew --prefix)
-   
+
    # NVM
    # https://github.com/nvm-sh/nvm
    export NVM_DIR=$HOME/.nvm
-   
+
    # YARN
    export YARN_RC_FILENAME=.yarnrc.yml
    ```
@@ -106,7 +106,6 @@ Follow the steps below to setup your local development environment:
 | `CODECOV_TOKEN`     |
 | `GITHUB_TOKEN`      |
 | `HOMEBREW_BREWFILE` |
-| `NODE_ENV`          |
 | `NODE_NO_WARNINGS`  |
 | `PAT_BOT`           |
 | `ZSH_DOTENV_FILE`   |
@@ -204,18 +203,12 @@ See [`.commitlintrc.cts`](.commitlintrc.cts) to view all commit guidelines.
 
 ### Code Style
 
-[Prettier][10] is used to format code and [ESLint][11] to lint files.
+[dprint][10] is used to format code and [ESLint][11] to lint files.
 
-#### ESLint Configuration
-
+- [`.dprint.jsonc`](.dprint.jsonc)
+- [`.eslintignore`](.eslintignore)
 - [`.eslintrc.base.cjs`](.eslintrc.base.cjs)
 - [`.eslintrc.cjs`](.eslintrc.cjs)
-- [`.eslintignore`](.eslintignore)
-
-#### Prettier Configuration
-
-- [`.prettierrc.json`](.prettierrc.json)
-- [`.prettierignore`](.prettierignore)
 
 ### Making Changes
 
@@ -390,8 +383,7 @@ Before deploying, the following steps must be completed:
          - publish package to [npm][22]
 
 [1]: https://brew.sh
-[2]:
-  https://docs.github.com/authentication/managing-commit-signature-verification/about-commit-signature-verification#gpg-commit-signature-verification
+[2]: https://docs.github.com/authentication/managing-commit-signature-verification/about-commit-signature-verification#gpg-commit-signature-verification
 [3]: https://yarnpkg.com/getting-started
 [4]: https://github.com/ohmyzsh/ohmyzsh
 [5]: https://github.com/typicode/husky
@@ -399,7 +391,7 @@ Before deploying, the following steps must be completed:
 [7]: https://trunkbaseddevelopment.com/styles/#short-lived-feature-branches
 [8]: https://conventionalcommits.org
 [9]: https://github.com/conventional-changelog/commitlint
-[10]: https://prettier.io
+[10]: https://dprint.dev/
 [11]: https://eslint.org
 [12]: https://jsdoc.app
 [13]: https://github.com/gajus/eslint-plugin-jsdoc

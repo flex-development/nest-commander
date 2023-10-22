@@ -5,11 +5,7 @@
 
 import { Argument, Command, Option, type ParseOptions } from '#src/commander'
 import { MetadataKey } from '#src/enums'
-import type {
-  CommandMetadata,
-  OptionMetadata,
-  RunnerMetadata
-} from '#src/metadata'
+import type { CommandMetadata, RunnerMetadata } from '#src/metadata'
 import { Program, ProgramOptions } from '#src/models'
 import type { DiscoveredCommand } from '#src/types'
 import {
@@ -231,11 +227,10 @@ class CommandRunnerService implements OnModuleInit {
       metadata.push({
         command,
         instance: cast(discoveredClass.instance),
-        options:
-          await this.discovery.providerMethodsWithMetaAtKey<OptionMetadata>(
-            MetadataKey.OPTION,
-            found => found.name === discoveredClass.name
-          )
+        options: await this.discovery.providerMethodsWithMetaAtKey(
+          MetadataKey.OPTION,
+          found => found.name === discoveredClass.name
+        )
       })
     }
 

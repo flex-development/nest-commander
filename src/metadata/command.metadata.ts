@@ -8,7 +8,7 @@ import type { Example } from '#src/commander'
 import type { ArgumentOptions } from '#src/interfaces'
 import type { Class, OneOrMany } from '@flex-development/tutils'
 
-/**s
+/**
  * Command metadata.
  */
 interface CommandMetadata {
