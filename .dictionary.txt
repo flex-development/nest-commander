@@ -33,6 +33,7 @@ pathe
 pkgs
 preid
 shfmt
+tohgarashi
 tscu
 unstub
 vates
