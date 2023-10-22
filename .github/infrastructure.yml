@@ -25,6 +25,29 @@ branches:
           - context: auto-merge
           - context: auto-review
           - context: build
+          - context: changelog
+          - context: codecov/changes
+            app_id: 254
+          - context: codecov/patch
+            app_id: 254
+          - context: codecov/project
+            app_id: 254
+          - context: codecov/project/abstracts
+            app_id: 254
+          - context: codecov/project/commander
+            app_id: 254
+          - context: codecov/project/decorators
+            app_id: 254
+          - context: codecov/project/enums
+            app_id: 254
+          - context: codecov/project/models
+            app_id: 254
+          - context: codecov/project/providers
+            app_id: 254
+          - context: codecov/project/testing
+            app_id: 254
+          - context: codecov/project/utils
+            app_id: 254
           - context: commitlint
           - context: dependabot-dedupe
           - context: format
