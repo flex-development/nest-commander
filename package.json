@@ -176,7 +176,7 @@
     "chai": "5.0.0-alpha.1"
   },
   "engines": {
-    "node": ">=16.20.0"
+    "node": ">=18.18.2 <20.6.0 || >20.6.0"
   },
   "packageManager": "yarn@4.0.0",
   "readme": "README.md",

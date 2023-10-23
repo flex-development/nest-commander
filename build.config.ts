@@ -5,6 +5,7 @@
 
 import { defineBuildConfig, type Config } from '@flex-development/mkbuild'
 import pathe from '@flex-development/pathe'
+import { at } from '@flex-development/tutils'
 import pkg from './package.json' assert { type: 'json' }
 import tsconfig from './tsconfig.build.json' assert { type: 'json' }
 
@@ -39,7 +40,7 @@ const config: Config = defineBuildConfig({
   keepNames: true,
   minifySyntax: true,
   target: [
-    pkg.engines.node.replace(/^\D+/, 'node'),
+    'node' + at(/([\d.]+)/.exec(pkg.engines.node), 0, ''),
     tsconfig.compilerOptions.target
   ],
   tsconfig: 'tsconfig.build.json'
