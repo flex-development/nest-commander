@@ -176,10 +176,9 @@
     "chai": "5.0.0-alpha.1"
   },
   "engines": {
-    "node": ">=16.20.0",
-    "yarn": "4.0.0-rc.50"
+    "node": ">=16.20.0"
   },
-  "packageManager": "yarn@4.0.0-rc.50",
+  "packageManager": "yarn@4.0.0",
   "readme": "README.md",
   "sideEffects": false
 }
