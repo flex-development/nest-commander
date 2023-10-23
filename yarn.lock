@@ -12,25 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@actions/core@npm:^1.10.0":
-  version: 1.10.0
-  resolution: "@actions/core@npm:1.10.0"
-  dependencies:
-    "@actions/http-client": "npm:^2.0.1"
-    uuid: "npm:^8.3.2"
-  checksum: 40f94a994da7b041ed35119abef9bbd19f56a75fdca08b0b7fd4af3da2c69873de5a751cf956cf1437515f4e9cf7ee94204a0c885788f6d0986841ee972ecb29
-  languageName: node
-  linkType: hard
-
-"@actions/http-client@npm:^2.0.1":
-  version: 2.1.1
-  resolution: "@actions/http-client@npm:2.1.1"
-  dependencies:
-    tunnel: "npm:^0.0.6"
-  checksum: 9bfc6b96c9426c8f633f227d2d781b5419a89a5bad502ed882691de29f7b9af01be4591caa6c89444b6bfc9ba1555bf7e77a121127a976de27fa5296d399eb3a
-  languageName: node
-  linkType: hard
-
 "@ampproject/remapping@npm:^2.2.1":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -1534,7 +1515,6 @@ __metadata:
     vite: "npm:4.4.11"
     vite-tsconfig-paths: "npm:4.2.1"
     vitest: "npm:0.34.3"
-    vitest-github-actions-reporter: "npm:0.10.0"
     yaml-eslint-parser: "npm:1.2.2"
   peerDependencies:
     "@nestjs/common": ">=10.0.0"
@@ -8259,13 +8239,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tunnel@npm:^0.0.6":
-  version: 0.0.6
-  resolution: "tunnel@npm:0.0.6"
-  checksum: cf1ffed5e67159b901a924dbf94c989f20b2b3b65649cfbbe4b6abb35955ce2cf7433b23498bdb2c5530ab185b82190fce531597b3b4a649f06a907fc8702405
-  languageName: node
-  linkType: hard
-
 "type-check@npm:^0.4.0, type-check@npm:~0.4.0":
   version: 0.4.0
   resolution: "type-check@npm:0.4.0"
@@ -8648,17 +8621,6 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 325e2955fe939bc5706aab2aa46498d98adace1df4d11f42cf4539754b886798b6bf7c247c94d23fb6cf3a569e56bad4a11561bf25e8e6dcc8c0e2f73ecc5e5b
-  languageName: node
-  linkType: hard
-
-"vitest-github-actions-reporter@npm:0.10.0":
-  version: 0.10.0
-  resolution: "vitest-github-actions-reporter@npm:0.10.0"
-  dependencies:
-    "@actions/core": "npm:^1.10.0"
-  peerDependencies:
-    vitest: ">=0.28.5"
-  checksum: 454df415ccb5f79f8b8a598e1b37cacefd8b0125c8bdbf0216d15deb15c41661c1077adefcd3fc2ef00be6b4981e0e833197b204109f1d2bf178948010b0fcab
   languageName: node
   linkType: hard
 
