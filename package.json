@@ -97,7 +97,7 @@
     "@flex-development/decorator-regex": "2.0.0",
     "@flex-development/esm-types": "2.0.0",
     "@flex-development/grease": "3.0.0-alpha.3",
-    "@flex-development/mkbuild": "1.0.0-alpha.22",
+    "@flex-development/mkbuild": "1.0.0-alpha.23",
     "@flex-development/mlly": "1.0.0-alpha.18",
     "@flex-development/toggle-pkg-type": "2.0.1",
     "@flex-development/tsconfig-utils": "2.0.2",
