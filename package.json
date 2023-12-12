@@ -154,7 +154,7 @@
     "trash-cli": "5.0.0",
     "ts-dedent": "2.2.0",
     "typescript": "5.2.2",
-    "vite": "4.4.11",
+    "vite": "5.0.8",
     "vite-tsconfig-paths": "4.2.1",
     "vitest": "0.34.3",
     "yaml-eslint-parser": "1.2.2"
